@@ -1,19 +1,5 @@
-# Disclaimer
-As of 26/07/2022 VRChat released an update which includes a kernel anti-cheat known as [**Easy Anti-Cheat**](https://easy.ac).
-This is a horrible change and will harm VRChat more than it will help it. VRChat has always had a honestly terrible stance on (even wholesome) modding, but we co-existed without any big problems.
-
-Now they want to block all Quality of Life mods, all protection mods like [AdvancedSafety](https://github.com/knah/VRCMods#advancedsafety) and [NetworkSanity](https://github.com/RequiDev/NetworkSanity) that prevented you from crashing from common crashing methods.
-All of that, only to prevent a minority of malicious and toxic people in the game that also happen to use mods to be a nuisance around other people.
-
-With this change people using crashers will be more powerful than before. People using (Photon-)Bots will be more powerful than before. Because **YOU** won't have any protection due to Easy Anti-Cheat.
-
-If you are subscribed to VRC+ and think this change shouldn't happen, cancel your subscription. That's probably the only way they will listen.
-
-In the meantime, feel free to check out the private server project which aims at hosting your own VRChat by emulating its services:
-[![Discord](https://img.shields.io/discord/876431015478951936?color=DD00FF&logo=Discord&logoColor=FFFFFF&style=plastic)](https://discord.gg/bzb6TCfXsr)
-
-To VRChat:  
-Come on. You can do better.
+#Quest version
+THis is a port of the ReMod.Core project, originally ported as a button API by XOX-Toxic, with a restoration of its function as the ReMod.Core by Neeko, and includes extended functionality by me, Cyril
 
 # ReMod.Core
 
@@ -27,7 +13,7 @@ The core dependency of my VRChat mods **ReMod** and [ReModCE](https://github.com
 ## DISCLAIMER! THIS IS NOT A MOD. THIS IS JUST A DEPENDENCY FOR MODS!
 
 ## Description
-This library powers both my private VRChat mod and the public version of it. Its main use is to create UI elements for VRChat in an easy way without all the work behind it.
+This is a library capable of powering mods for the quest version of VRC. It will be used to power my own private and public mods, as well as an upcoming recreation of ReMod CE for quest
 
 ## Usage
 If you don't intend to modify the project your best bet is to either download the latest release from [here](https://github.com/RequiDev/ReMod.Core/releases/latest) or [here](https://github.com/RequiDev/ReModCE/releases/latest). Both this project and ReModCE will have an automatically built version in their releases.  
@@ -50,3 +36,6 @@ In case you do have something to contribute, please create a pull request. Try t
 [@imxLucid](https://github.com/imxLucid)  
 [@DDAkebono](https://github.com/DDAkebono)  
 [@MintLily](https://github.com/MintLily)
+XOX-Toxic
+Cyril-XD
+Neeko
