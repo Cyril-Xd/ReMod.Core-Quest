@@ -88,13 +88,13 @@ namespace ReMod.Core.UI.QuickMenu
             _sliderContainer = container;
         }
 
-        public ReMenuSlider AddSlider(string text, string tooltip, Action<float> onSlide, bool reset, float defaultValue = 0, float minValue = 0, float maxValue = 10)
+        public ReMenuSlider AddSlider(string text, string tooltip, Action<float> onSlide, bool reset = false, float defaultValue = 0, float minValue = 0, float maxValue = 10)
         {
             var slider = new ReMenuSlider(text, tooltip, onSlide, _sliderContainer.RectTransform, reset, defaultValue, minValue, maxValue);
             return slider;
         }
 
-        public ReMenuSlider AddSlider(string text, string tooltip, ConfigValue<float> configValue, bool reset, float defaultValue = 0, float minValue = 0, float maxValue = 10)
+        public ReMenuSlider AddSlider(string text, string tooltip, ConfigValue<float> configValue, bool reset = false, float defaultValue = 0, float minValue = 0, float maxValue = 10)
         {
             var slider = new ReMenuSlider(text, tooltip, configValue.SetValue, _sliderContainer.RectTransform, reset, configValue, minValue, maxValue);
             return slider;
