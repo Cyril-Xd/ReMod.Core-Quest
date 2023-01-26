@@ -28,7 +28,7 @@ namespace ReMod.Core.Managers
                 var localMenu = new ReCategoryPage(QuickMenuEx.SelectedUserLocal.transform);
                 TargetMenu = localMenu.AddCategory($"{menuName}");
             }
-            if (createMainMenu )
+            if (createMainMenu)
             {
                 var localMenu = new ReCategoryPage(QuickMenuEx.DashboardMenu.transform);
                 LaunchPad = localMenu.AddCategory($"{menuName}");
