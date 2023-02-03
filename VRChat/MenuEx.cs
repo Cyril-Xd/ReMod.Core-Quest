@@ -371,7 +371,7 @@ namespace ReMod.Core.VRChat
             {
                 if (_sliderPrefab == null)
                 {
-                    _sliderPrefab = Instance.transform.Find("CanvasGroup/Container/Window/QMParent/Menu_AudioSettings/Panel_QM_ScrollRect/Viewport/VerticalLayoutGroup/Audio/VolumeSlider_Master").gameObject;
+                    _sliderPrefab = Instance.transform.Find("CanvasGroup/Container/Window/QMParent/Menu_AudioSettings/Panel_QM_ScrollRect/Viewport/VerticalLayoutGroup/Audio/Audio/VolumeSlider_Master").gameObject;
                 }
                 return _sliderPrefab;
             }
