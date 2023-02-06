@@ -60,12 +60,13 @@ namespace ReMod.Core.UI.QuickMenu
         }
 
         public Image Background { get; }
+        
 
-        public ReMenuButton(string text, string tooltip, Action onClick, Transform parent, Sprite sprite = null, bool resizeTextNoSprite = true) : base(ButtonPrefab, parent,
+        public ReMenuButton(string text, string tooltip, Action onClick, Transform parent, Sprite sprite = null, bool resizeTextNoSprite = true, string color = "#ffffff") : base(ButtonPrefab, parent,
             $"Button_{text}")
         {
-            _text = GameObject.GetComponentInChildren<TextMeshProUGUI>();
-            _text.text = text;
+            _text = GameObject.GetComponentInChildren<TextMeshProUGUI>();            
+            _text.text = "<color="+color+">"+text+"</color>";
             _text.richText = true;
 
             Background = RectTransform.Find("Background").GetComponent<Image>();
@@ -133,6 +134,8 @@ namespace ReMod.Core.UI.QuickMenu
                 _button.onClick = new Button.ButtonClickedEvent();
                 _button.onClick.AddListener(new Action(onClick));
             }
+
+           
         }
 
         public ReMenuButton(Transform transform) : base(transform)

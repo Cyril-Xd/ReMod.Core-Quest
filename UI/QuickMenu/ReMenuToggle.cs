@@ -53,7 +53,7 @@ namespace ReMod.Core.UI.QuickMenu
             }
         }
         public ReMenuToggle(string text, string tooltip, Action<bool> onToggle, Transform parent, bool defaultValue = false) : this(text, tooltip, onToggle, parent, defaultValue, null, null) { }
-        public ReMenuToggle(string text, string tooltip, Action<bool> onToggle, Transform parent, bool defaultValue = false, Sprite iconOn = null, Sprite iconOff = null) : base(QuickMenuEx.TogglePrefab, parent, $"Button_Toggle{text}")
+        public ReMenuToggle(string text, string tooltip, Action<bool> onToggle, Transform parent, bool defaultValue = false, Sprite iconOn = null, Sprite iconOff = null, string color = "#ffffff") : base(QuickMenuEx.TogglePrefab, parent, $"Button_Toggle{text}")
         {
             var icon = RectTransform.Find("Icon_On").GetComponent<Image>();
             icon.sprite = iconOn ?? QuickMenuEx.OnIconSprite;
@@ -69,7 +69,7 @@ namespace ReMod.Core.UI.QuickMenu
             _toggleStyleElement = GameObject.GetComponent<StyleElement>();
 
             _textComponent = GameObject.GetComponentInChildren<TextMeshProUGUI>();
-            _textComponent.text = text;
+            _textComponent.text = "<color=" + color + ">" + text + "</color>";
             _textComponent.richText = true;
             _textComponent.color = new Color(0.4157f, 0.8902f, 0.9765f, 1f);
             _textComponent.m_fontColor = new Color(0.4157f, 0.8902f, 0.9765f, 1f);
