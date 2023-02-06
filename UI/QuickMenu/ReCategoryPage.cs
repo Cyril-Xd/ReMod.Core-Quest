@@ -37,7 +37,7 @@ namespace ReMod.Core.UI.QuickMenu
 
         public UIPage UiPage { get; }
 
-        public ReCategoryPage(string text, bool isRoot = false) : base(MenuPrefab, QuickMenuEx.MenuParent, $"Menu_{text}", false)
+        public ReCategoryPage(string text, bool isRoot = false, string color = "#ffffff") : base(MenuPrefab, QuickMenuEx.MenuParent, $"Menu_{text}", false)
         {
             if (!_fixedLaunchpad)
             {
@@ -61,7 +61,7 @@ namespace ReMod.Core.UI.QuickMenu
             Object.DestroyImmediate(headerTransform.Find("RightItemContainer/Button_QM_Expand").gameObject);
 
             var titleText = headerTransform.GetComponentInChildren<TextMeshProUGUI>();
-            titleText.text = text;
+            titleText.text = "<color=" + color + ">" + text + "</color>";
             titleText.richText = true;
 
 

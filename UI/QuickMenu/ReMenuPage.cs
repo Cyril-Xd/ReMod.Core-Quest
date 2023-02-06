@@ -40,7 +40,7 @@ namespace ReMod.Core.UI.QuickMenu
 
         public UIPage UiPage { get; }
 
-        public ReMenuPage(string text, bool isRoot = false) : base(MenuPrefab, QuickMenuEx.MenuParent, $"Menu_{text}", false)
+        public ReMenuPage(string text, bool isRoot = false, string color = "#ffffff") : base(MenuPrefab, QuickMenuEx.MenuParent, $"Menu_{text}", false)
         {
             Object.DestroyImmediate(GameObject.GetComponent<DevMenu>());
 
@@ -50,7 +50,7 @@ namespace ReMod.Core.UI.QuickMenu
             _isRoot = isRoot;
             var headerTransform = RectTransform.GetChild(0);
             var titleText = headerTransform.GetComponentInChildren<TextMeshProUGUI>();
-            titleText.text = text;
+            titleText.text = "<color=" + color + ">" + text + "</color>";
             titleText.richText = true;
 
             if (!_isRoot)
