@@ -6,8 +6,6 @@ using Object = UnityEngine.Object;
 
 namespace ReMod.Core.UI.MainMenu
 {
-
-
     public class ReMMUserButton
     {
         private VRC.UI.Elements.Tooltips.UiTooltip _tooltip;

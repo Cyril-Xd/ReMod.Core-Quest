@@ -9,7 +9,6 @@ using VRC.UI.Elements;
 using VRC.UI.Elements.Controls;
 using Object = UnityEngine.Object;
 
-
 namespace ReMod.Core.UI.QuickMenu
 {
     public class ReRadioToggle : UiElement

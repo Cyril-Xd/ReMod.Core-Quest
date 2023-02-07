@@ -10,8 +10,6 @@ using VRC.UI.Elements;
 using VRC.UI.Elements.Controls;
 using Object = System.Object;
 
-
-
 namespace ReMod.Core.UI.QuickMenu
 {
     public class ReRadioTogglePage : UiElement

@@ -3,7 +3,6 @@ using TMPro;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-
 namespace ReMod.Core.UI.QuickMenu
 {
     public class ReMenuLabel : UiElement
@@ -20,24 +19,24 @@ namespace ReMod.Core.UI.QuickMenu
                 return _buttonPrefab;
             }
 		}
-		public void SetSubtitle(string text)
+		public void SetSubtitle(string text, string color = "#ffffff")
 		{
 			TextMeshProUGUI component = base.RectTransform.Find("Text_H4").GetComponent<TextMeshProUGUI>();
 			component.richText = true;
-			component.text = text;
+			component.text = "<color="+color+">"+text+"</color>";
 		}
 
-		public void SetText(string text, int fontsize = 46)
+		public void SetText(string text, int fontsize = 46, string color = "#ffffff")
 		{
 			TextMeshProUGUI componentInChildren = base.RectTransform.Find("Text_H1").GetComponentInChildren<TextMeshProUGUI>();
-			componentInChildren.text = text;
+			componentInChildren.text = "<color="+color+">"+text+"</color>";
 			componentInChildren.fontSize = fontsize;
 		}
-		public ReMenuLabel(Transform transform, string text, string subtitleText, int fontsize = 46)  : base(ButtonPrefab, transform, "Label_" + subtitleText, true)
+		public ReMenuLabel(Transform transform, string text, string subtitleText, int fontsize = 46, string color = "#ffffff")  : base(ButtonPrefab, transform, "Label_" + subtitleText, true)
 		{
 			Object.DestroyImmediate(base.RectTransform.Find("Text_H1").GetComponent<TextBinding>());
-			this.SetText(text, fontsize);
-			this.SetSubtitle(subtitleText);
+			this.SetText(text, fontsize, color);
+			this.SetSubtitle(subtitleText, color);
 		}
 	}
 }

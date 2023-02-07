@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using VRC.UI.Elements;
 
-
 namespace ReMod.Core.UI.QuickMenu
 {
     public class ReIconButton
