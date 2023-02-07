@@ -6,7 +6,7 @@ using HarmonyMethod = HarmonyLib.HarmonyMethod;
 
 namespace ReMod.Core.VRChat
 {
-    public class Patches
+    public class ReModPatches
     {
         internal static void OnActionMenu(ActionMenu __instance) => UI.ActionMenu.ActionMenuAPI.OpenMainPage(__instance);
         
@@ -25,7 +25,7 @@ namespace ReMod.Core.VRChat
                          && m.XRefCount() < 22
                 );
             
-                instance.Patch(mainPage, postfix: new HarmonyMethod(typeof(Patches).GetMethod(nameof(OnActionMenu), BindingFlags.NonPublic | BindingFlags.Static)));
+                instance.Patch(mainPage, postfix: new HarmonyMethod(typeof(ReModPatches).GetMethod(nameof(OnActionMenu), BindingFlags.NonPublic | BindingFlags.Static)));
             }
             catch (Exception e)
             {

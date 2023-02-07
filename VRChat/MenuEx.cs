@@ -99,7 +99,7 @@ namespace ReMod.Core.VRChat
                         _getActionMenuInstance = ActionMenuController.prop_ActionMenuController_0;
                     }
                     
-                    Patches.Patch();
+                    ReModPatches.Patch();
                 }
                 
                 return _getActionMenuInstance;
