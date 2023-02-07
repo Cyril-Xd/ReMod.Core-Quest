@@ -1,13 +1,12 @@
 ﻿using System;
 using UnityEngine;
-using static ReMod.Core.UI.ActionMenuCore.ActionMenuAPI;
+using static ReMod.Core.UI.ActionMenu.ActionMenuAPI;
 
-namespace ReMod.Core.UI.ActionMenuCore
+namespace ReMod.Core.UI.ActionMenu
 {
     public class ActionMenuButton
     {
         public PedalOption currentPedalOption;
-
         public string buttonText;
         public Texture2D buttonIcon;
         public Func<bool> buttonAction;
@@ -17,7 +16,7 @@ namespace ReMod.Core.UI.ActionMenuCore
             buttonText = text;
             if (icon != null)
                 buttonIcon = icon.texture;
-            buttonAction = delegate ()
+            buttonAction = delegate
             {
                 action();
                 return true;
@@ -34,10 +33,9 @@ namespace ReMod.Core.UI.ActionMenuCore
             buttonText = text;
             if (icon != null)
                 buttonIcon = icon.texture;
-            buttonAction = delegate ()
+            buttonAction = delegate
             {
                 action();
-
                 return true;
             };
 

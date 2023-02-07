@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnhollowerRuntimeLib;
 using UnityEngine;
-using ReMod.Core.UI.ActionMenuCore;
-using static ReMod.Core.UI.ActionMenuCore.ActionMenuAPI;
+using static ReMod.Core.UI.ActionMenu.ActionMenuAPI;
 
-namespace ReMod.Core.UI.ActionMenuCore
+namespace ReMod.Core.UI.ActionMenu
 {
     public class ActionMenuPage
     {
@@ -24,17 +23,14 @@ namespace ReMod.Core.UI.ActionMenuCore
         public ActionMenuPage(ActionMenuPage basePage, string buttonText, Sprite buttonIcon = null)
         {
             ActionMenuPage page = this;
-
+            
             previousPage = basePage;
-            menuEntryButton = new ActionMenuButton(previousPage, buttonText, delegate ()
-            {
-                page.OpenMenu();
-            }, buttonIcon);
+            menuEntryButton = new ActionMenuButton(previousPage, buttonText, page.OpenMenu, buttonIcon);
         }
 
         public void OpenMenu()
         {
-            GetActionMenuOpener().field_Public_ActionMenu_0.Method_Public_ObjectNPublicAcTeAcStGaUnique_Action_Action_Texture2D_String_0(new Action(() =>
+            GetActionMenuOpener()?.field_Public_ActionMenu_0.Method_Public_ObjectNPublicAcTeAcStGaUnique_Action_Action_Texture2D_String_0(new Action(() =>
             {
                 foreach (ActionMenuButton button in buttons)
                 {

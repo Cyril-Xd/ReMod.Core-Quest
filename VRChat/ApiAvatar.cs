@@ -1,8 +1,8 @@
 ﻿using VRC.Core;
 
-namespace ReMod.Core.VRChat.Avatars
+namespace ReMod.Core.VRChat
 {
-    internal class AvatarFav_Object
+    internal class Avatar_Object
     {
         public string id { get; set; }
         public string name { get; set; }
@@ -16,9 +16,9 @@ namespace ReMod.Core.VRChat.Avatars
         public int supportedPlatforms { get; set; }
         public string releaseStatus { get; set; }
 
-        internal AvatarFav_Object() { }
+        internal Avatar_Object() { }
 
-        internal AvatarFav_Object(ApiAvatar avtr)
+        internal Avatar_Object(ApiAvatar avtr)
         {
             id = avtr.id;
             name = avtr.name;
@@ -33,7 +33,7 @@ namespace ReMod.Core.VRChat.Avatars
             releaseStatus = avtr.releaseStatus;
         }
 
-        internal AvatarFav_Object(AvatarFav_Object avtr)
+        internal Avatar_Object(Avatar_Object avtr)
         {
             id = avtr.id;
             name = avtr.name;
@@ -67,32 +67,24 @@ namespace ReMod.Core.VRChat.Avatars
 
         private static ApiModel.SupportedPlatforms getPlatform(int num)
         {
-            switch (num)
+            return num switch
             {
-                case 0:
-                    return ApiModel.SupportedPlatforms.All;
-                case 1:
-                    return ApiModel.SupportedPlatforms.Android;
-                case 2:
-                    return ApiModel.SupportedPlatforms.StandaloneWindows;
-                default:
-                    return ApiModel.SupportedPlatforms.None;
-            }
+                0 => ApiModel.SupportedPlatforms.All,
+                1 => ApiModel.SupportedPlatforms.Android,
+                2 => ApiModel.SupportedPlatforms.StandaloneWindows,
+                _ => ApiModel.SupportedPlatforms.None
+            };
         }
 
         private static int savePlatform(ApiModel.SupportedPlatforms supportedPlatform)
         {
-            switch (supportedPlatform)
+            return supportedPlatform switch
             {
-                case ApiModel.SupportedPlatforms.All:
-                    return 0;
-                case ApiModel.SupportedPlatforms.Android:
-                    return 1;
-                case ApiModel.SupportedPlatforms.StandaloneWindows:
-                    return 2;
-                default:
-                    return 3;
-            }
+                ApiModel.SupportedPlatforms.All => 0,
+                ApiModel.SupportedPlatforms.Android => 1,
+                ApiModel.SupportedPlatforms.StandaloneWindows => 2,
+                _ => 3
+            };
         }
     }
 }

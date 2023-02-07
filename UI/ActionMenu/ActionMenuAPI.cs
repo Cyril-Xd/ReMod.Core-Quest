@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using UnhollowerRuntimeLib;
 
-namespace ReMod.Core.UI.ActionMenuCore
+namespace ReMod.Core.UI.ActionMenu
 {
     public static class ActionMenuAPI
     {
         internal static readonly List<ActionMenuButton> mainMenuButtons = new();
-        public static ActionMenu activeActionMenu;
+        public static global::ActionMenu activeActionMenu;
         public enum ActionMenuBaseMenu
         {
             MainMenu = 1
@@ -17,22 +17,22 @@ namespace ReMod.Core.UI.ActionMenuCore
 
         internal static ActionMenuOpener GetActionMenuOpener()
         {
-            if (ActionMenuController.prop_ActionMenuController_0.field_Public_ActionMenuOpener_0.IsOpen() == false &&
-                ActionMenuController.prop_ActionMenuController_0.field_Public_ActionMenuOpener_1.IsOpen() == true)
+            if (!ActionMenuController.prop_ActionMenuController_0.field_Public_ActionMenuOpener_0.IsOpen() &&
+                ActionMenuController.prop_ActionMenuController_0.field_Public_ActionMenuOpener_1.IsOpen())
             {
                 return ActionMenuController.prop_ActionMenuController_0.field_Public_ActionMenuOpener_1;
             }
 
-            if (ActionMenuController.prop_ActionMenuController_0.field_Public_ActionMenuOpener_0.IsOpen() == true &&
-                ActionMenuController.prop_ActionMenuController_0.field_Public_ActionMenuOpener_1.IsOpen() == false)
+            if (ActionMenuController.prop_ActionMenuController_0.field_Public_ActionMenuOpener_0.IsOpen() &&
+                !ActionMenuController.prop_ActionMenuController_0.field_Public_ActionMenuOpener_1.IsOpen())
             {
                 return ActionMenuController.prop_ActionMenuController_0.field_Public_ActionMenuOpener_0;
             }
 
             return null;
         }
-
-        public static void OpenMainPage(ActionMenu menu)
+        
+        public static void OpenMainPage(global::ActionMenu menu)
         {
             activeActionMenu = menu;
             foreach (ActionMenuButton button in mainMenuButtons)
