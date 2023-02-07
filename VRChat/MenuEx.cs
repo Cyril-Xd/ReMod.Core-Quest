@@ -5,7 +5,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Harmony;
 using UnhollowerRuntimeLib;
 using UnityEngine;
 using UnityEngine.UI;
@@ -99,9 +98,10 @@ namespace ReMod.Core.VRChat
                         while (ReferenceEquals(ActionMenuController.prop_ActionMenuController_0, null)) yield return null;
                         _getActionMenuInstance = ActionMenuController.prop_ActionMenuController_0;
                     }
+                    
+                    Patches.Patch();
                 }
                 
-                HarmonyInstance.Create(Assembly.GetExecutingAssembly().FullName).PatchAll();
                 return _getActionMenuInstance;
             }
         }

@@ -115,5 +115,29 @@ namespace ReMod.Core
                 }
             }
         }
+
+        internal static bool XRefScanForMethod(this MethodBase methodBase, string methodName = null, string reflectedType = null) {
+            var found = false;
+            foreach (var xref in XrefScanner.XrefScan(methodBase)) {
+                if (xref.Type != XrefType.Method) continue;
+                var resolved = xref.TryResolve();
+                if (resolved == null) continue;
+                if (!string.IsNullOrEmpty(methodName)) found = !string.IsNullOrEmpty(resolved.Name) && resolved.Name.IndexOf(methodName, StringComparison.OrdinalIgnoreCase) >= 0;
+                if (!string.IsNullOrEmpty(reflectedType)) found = !string.IsNullOrEmpty(resolved.ReflectedType?.Name) && resolved.ReflectedType.Name.IndexOf(reflectedType, StringComparison.OrdinalIgnoreCase) >= 0;
+                if (found) return true;
+            }
+            return false;
+        }
+
+        internal static int XRefCount(this MethodBase methodBase) {
+            int found = 0;
+            foreach (var xref in XrefScanner.XrefScan(methodBase)) {
+                if (xref.Type != XrefType.Method) continue;
+                var resolved = xref.TryResolve();
+                if (resolved == null) continue;
+                found++;
+            }
+            return found;
+        }
     }
 }

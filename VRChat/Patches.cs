@@ -1,11 +1,37 @@
-﻿
+﻿using System;
+using System.Linq;
+using System.Reflection;
+using Harmony;
+using HarmonyMethod = HarmonyLib.HarmonyMethod;
+
 namespace ReMod.Core.VRChat
 {
-    [HarmonyLib.HarmonyPatch(typeof(ActionMenu), "Method_Public_Void_PDM_4")]
-    public class ActionMenuPatch
+    public class Patches
     {
-        [HarmonyLib.HarmonyPostfix]
         internal static void OnActionMenu(ActionMenu __instance) => UI.ActionMenu.ActionMenuAPI.OpenMainPage(__instance);
+        
+        internal static void Patch()
+        {
+            try
+            {
+                var instance = HarmonyInstance.Create(Assembly.GetExecutingAssembly().FullName);
+                var mainPage = typeof(ActionMenu).GetMethods().First(
+                    m => m.ReturnType == typeof(void)
+                         && m.GetParameters().Length == 0
+                         && m.Name.Contains("PDM")
+                         && m.XRefScanForMethod(reflectedType: nameof(PedalOption))
+                         && m.XRefScanForMethod(reflectedType: nameof(ActionButton))
+                         && m.Name.Contains("4")
+                         && m.XRefCount() < 22
+                );
+            
+                instance.Patch(mainPage, postfix: new HarmonyMethod(typeof(Patches).GetMethod(nameof(OnActionMenu), BindingFlags.NonPublic | BindingFlags.Static)));
+            }
+            catch (Exception e)
+            {
+                MelonLoader.MelonLogger.Msg("Failed Patching. " + e.Message + " " + e.StackTrace + " " + e.Source);
+            }
+        }
     }
 }
 
