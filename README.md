@@ -3,12 +3,9 @@ THis is a port of the ReMod.Core project, originally ported as a button API by X
 
 # ReMod.Core
 
-[![main](https://img.shields.io/github/workflow/status/RequiDev/ReMod.Core/main?style=for-the-badge)](https://github.com/RequiDev/ReMod.Core/actions/workflows/main.yml)
-[![All Releases](https://img.shields.io/github/downloads/RequiDev/ReMod.Core/total.svg?style=for-the-badge&logo=appveyor)](https://github.com/RequiDev/ReMod.Core/releases)
-
 ![ReMod Core Logo](https://github.com/RequiDev/ReMod.Core/raw/master/remod_core_logo.png)
 
-The core dependency of my VRChat mods **ReMod** and [ReModCE](https://github.com/RequiDev/ReModCE). This project contains several helper functions, wrappers and UI classes for VRChat, Unity and [MelonLoader](https://github.com/LavaGang/MelonLoader).
+
 
 ## DISCLAIMER! THIS IS NOT A MOD. THIS IS JUST A DEPENDENCY FOR MODS!
 
@@ -16,26 +13,41 @@ The core dependency of my VRChat mods **ReMod** and [ReModCE](https://github.com
 This is a library capable of powering mods for the quest version of VRC. It will be used to power my own private and public mods, as well as an upcoming recreation of ReMod CE for quest
 
 ## Usage
-If you don't intend to modify the project your best bet is to either download the latest release from [here](https://github.com/RequiDev/ReMod.Core/releases/latest) or [here](https://github.com/RequiDev/ReModCE/releases/latest). Both this project and ReModCE will have an automatically built version in their releases.  
-You'll want to link against that version and just supply it with your mod by either automatically load version from GitHub like [here](https://github.com/RequiDev/ReModCE/blob/master/ReModCE.Loader/ReMod.Loader.cs#L194)
-
+If you don't intend to modify the project your best bet is to either download the latest release from [here](https://github.com/Cyril-Xd/ReMod.Core-Quest/releases/latest) 
 If you **NEED** to modify ReMod.Core and need those changes to be in here, I'd suggest adding this repository to yours as a [git submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules).
 Modify ReMod.Core as you need it, test your changes and create a pull request to submit your changes.
 
-Please don't ILMerge ReMod.Core into your project as that can cause all sorts of problems with 2 ReMod.Core libraries existing in 1 process.
-
 ## Documentation
-I'll be honest, read the code in [ReModCE](https://github.com/RequiDev/ReModCE). I wrote this library to use it for my projects. I'm fine with other people using it as long as they respect the [license](https://github.com/RequiDev/ReMod.Core/blob/master/LICENSE) behind it.  
-A few things are a bit convoluted, but that's because I tried my best to OOP the unity hierarchy of the UI objects behind it. It should still be easy enough to understand.
+Read the code in [ReModCE](https://github.com/RequiDev/ReModCE). Requi wrote this library to use it for their projects. They're fine with other people using it as long as they respect the [license](https://github.com/RequiDev/ReMod.Core/blob/master/LICENSE) behind it.  
+
 
 ## Contribution
 In case you do have something to contribute, please create a pull request. Try to stay close to the current coding style.
 
+## WaitForUI
+```
+private void startWaitForUI()
+        {
+            ClassInjector.RegisterTypeInIl2Cpp<EnableDisableListener>();
+            MelonCoroutines.Start(WaitForUI());
+        }
+        
+        private IEnumerator WaitForUI()
+        {
+            while (ReferenceEquals(VRCUiManager.field_Private_Static_VRCUiManager_0, null)) yield return null;
+            while (ReferenceEquals(QuickMenuEx.userInterface, null)) yield return null;
+            while (ReferenceEquals(QuickMenuEx.ActionMenuInstance, null)) yield return null;
+            UserInterface = QuickMenuEx.userInterface;
+            OnMenuStart();
+        }       
+```
 ## Credits
 [@Kiokuu](https://github.com/Kiokuu)  
 [@imxLucid](https://github.com/imxLucid)  
 [@DDAkebono](https://github.com/DDAkebono)  
 [@MintLily](https://github.com/MintLily)
+[@Kiokuu](https://github.com/Kiokuu) 
+[@WTFBlaze](https://github.com/WTFBlaze) 
 XOX-Toxic
 Cyril-XD
 Neeko
