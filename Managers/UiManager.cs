@@ -1,4 +1,5 @@
-﻿using ReMod.Core.UI.QuickMenu;
+﻿using ReMod.Core.UI.MainMenu;
+using ReMod.Core.UI.QuickMenu;
 using ReMod.Core.VRChat;
 using UnityEngine;
 
@@ -9,8 +10,9 @@ namespace ReMod.Core.Managers
         public IButtonPage MainMenu { get; }
         public IButtonPage TargetMenu { get; }
         public IButtonPage LaunchPad { get; }
+        public IButtonSystem BigMenu { get; }
 
-        public UiManager(string menuName, Sprite menuSprite, bool createTargetMenu = true, bool createMainMenu = true, bool crxcmodule = false)
+        public UiManager(string menuName, Sprite menuSprite, bool createTargetMenu = true, bool createMainMenu = true, bool crxcmodule = false, bool createBigMenu = true)
         {
             if (!crxcmodule)
             {
@@ -32,6 +34,11 @@ namespace ReMod.Core.Managers
             {
                 var localMenu = new ReCategoryPage(QuickMenuEx.DashboardMenu.transform);
                 LaunchPad = localMenu.AddCategory($"{menuName}");
+            }
+            if (createBigMenu)
+            {
+                BigMenu = new ReMMenuPage(menuName, true);
+                ReMMTab.Create(menuName, $"Open the {menuName} menu.", menuName, menuSprite);
             }
         }
     }

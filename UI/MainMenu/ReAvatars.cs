@@ -1,6 +1,12 @@
-﻿using ReMod.Core.VRChat;
+﻿using MelonLoader;
+using ReMod.Core.Managers;
+using ReMod.Core.VRChat;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using VRC.Core;
+using VRC.UI.Elements.Menus;
 
 namespace ReMod.Core.UI.MainMenu
 {
@@ -13,10 +19,10 @@ namespace ReMod.Core.UI.MainMenu
             inst.name = "Cell_MM_SidebarListItem (" + title + ")";
             var txt = inst.transform.Find("Mask/Text_Name").GetComponent<TMPro.TextMeshProUGUI>();
             txt.richText = true;
-            txt.text = title;         
+            txt.text = title;
             inst.transform.Find("Icon").GetComponent<Image>().overrideSprite = icon;
             var btn = inst.GetComponent<Button>();
-            btn.onClick.RemoveAllListeners();           
+            btn.onClick.RemoveAllListeners();
         }
     }
 }
