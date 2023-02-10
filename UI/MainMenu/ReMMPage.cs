@@ -1,4 +1,5 @@
-﻿using ReMod.Core.Unity;
+﻿using ReMod.Core.UI.QuickMenu;
+using ReMod.Core.Unity;
 using ReMod.Core.VRChat;
 using System;
 using System.Linq;
@@ -30,12 +31,13 @@ namespace ReMod.Core.UI.MainMenu
         public event Action OnOpen;
         public event Action OnClose;
         private readonly bool _isRoot;
-        
+        public GameObject MenuObject;
+
 
         private readonly Transform _container;
         public ReMMenuPage(string text, Sprite icon, bool isRoot = false, string color = "#ffffff") : base(MMMenuPagePrefab, MenuEx.MenuParent, $"Menu_{text}", false)
         {
-            var MenuObject = UnityEngine.Object.Instantiate(MMMenuPagePrefab, MMMenuPagePrefab.transform.parent);
+            MenuObject = UnityEngine.Object.Instantiate(MMMenuPagePrefab, MMMenuPagePrefab.transform.parent);
             UnityEngine.Object.DestroyImmediate(MenuObject.GetComponent<SettingsPage>());
 
             MenuObject.transform.SetSiblingIndex(19);
@@ -92,6 +94,8 @@ namespace ReMod.Core.UI.MainMenu
             rt.sizeDelta = new Vector2(250, 48);*/
             MenuTitleText.transform.parent.Find("Icon").GetComponent<Image>().sprite = icon;
             MenuObject.transform.Find("Menu_MM_DynamicSidePanel/Panel_SectionList/ScrollRect_Navigation/ScrollRect_Content/Header_MM_H2/LeftItemContainer/Text_Title").gameObject.SetActive(false);
+           
+
         }
         public ReMMenuPage(Transform transform) : base(transform)
         {
@@ -107,8 +111,26 @@ namespace ReMod.Core.UI.MainMenu
             MenuEx.MenuStateCtrl.Method_Public_Void_String_ObjectPublicStBoAc1ObObUnique_Boolean_EnumNPublicSealedvaNoLeRiBoIn6vUnique_0(UiPage.field_Public_String_0);
 
             OnOpen?.Invoke();
-        }      
+        }
+        public Transform GetCategoryButtonContainer()
+        {
+            return MenuObject.transform.Find("Menu_MM_DynamicSidePanel/Panel_SectionList/ScrollRect_Navigation/Viewport/VerticalLayoutGroup");
+        }
 
+        public Transform GetCategoryChildContainer()
+        {
+            return MenuObject.transform.Find("Menu_MM_DynamicSidePanel/Panel_SectionList/ScrollRect_Navigation/ScrollRect_Content/Viewport/VerticalLayoutGroup");
+        }
+        public TextMeshProUGUI GetCategoryTitle()
+        {
+            return MenuObject.transform.Find("Menu_MM_DynamicSidePanel/Panel_SectionList/ScrollRect_Navigation/ScrollRect_Content/Header_MM_H2/LeftItemContainer/Text_Title").GetComponent<TextMeshProUGUI>();
+        }
+
+        public ReMMenuPage GetMenuPage(string name)
+        {
+            var transform = MenuEx.MMenuParent.Find(GetCleanName($"Menu_{name}"));
+            return transform == null ? null : new ReMMenuPage(transform);
+        }
         public static ReMMenuPage Create(string text, Sprite icon, bool isRoot)
         {
             return new ReMMenuPage(text, icon, isRoot);

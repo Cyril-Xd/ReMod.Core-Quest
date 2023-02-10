@@ -56,6 +56,27 @@ namespace ReMod.Core.UI
         public static string GetCleanName(string name)
         {
             return Regex.Replace(Regex.Replace(name, "<.*?>", string.Empty), @"[^0-9a-zA-Z_]+", string.Empty);
+        }     
+    }
+}
+namespace ReMod.Core.UI
+{
+    internal static class utils
+    {
+        public static void DestroyChildren(this Transform transform)
+        {
+            transform.DestroyChildren(null);
+        }
+
+        public static void DestroyChildren(this Transform transform, Func<Transform, bool> exclude)
+        {
+            for (var i = transform.childCount - 1; i >= 0; i--)
+            {
+                if (exclude == null || exclude(transform.GetChild(i)))
+                {
+                    UnityEngine.Object.DestroyImmediate(transform.GetChild(i).gameObject);
+                }
+            }
         }
     }
 }
