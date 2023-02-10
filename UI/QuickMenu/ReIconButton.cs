@@ -16,7 +16,7 @@ namespace ReMod.Core.UI.QuickMenu
 
         public ReIconButton(ReMenuPage menu, Sprite icon)
         {
-            var toinst = QuickMenuEx.userInterface.transform.Find("Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/QMParent/Menu_Dashboard/Header_H1/RightItemContainer/Button_QM_Expand");
+            var toinst = MenuEx.userInterface.transform.Find("Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/QMParent/Menu_Dashboard/Header_H1/RightItemContainer/Button_QM_Expand");
             var inst = GameObject.Instantiate(toinst, toinst.parent).gameObject;         
             inst.transform.Find("Icon").GetComponent<Image>().overrideSprite = icon;
             var btn = inst.GetComponent<UnityEngine.UI.Button>();
@@ -31,7 +31,7 @@ namespace ReMod.Core.UI.QuickMenu
 
         public void Open()
         {
-            QuickMenuEx.MenuStateCtrl.Method_Public_Void_String_ObjectPublicStBoAc1ObObUnique_Boolean_EnumNPublicSealedvaNoLeRiBoIn6vUnique_0(UiPage.field_Public_String_0);
+            MenuEx.MenuStateCtrl.Method_Public_Void_String_ObjectPublicStBoAc1ObObUnique_Boolean_EnumNPublicSealedvaNoLeRiBoIn6vUnique_0(UiPage.field_Public_String_0);
 
             OnOpen?.Invoke();
         }

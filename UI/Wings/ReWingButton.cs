@@ -16,7 +16,7 @@ namespace ReMod.Core.UI.Wings
             {
                 if (_wingButtonPrefab == null)
                 {
-                    _wingButtonPrefab = QuickMenuEx.LeftWing.transform.Find("Container/InnerContainer/WingMenu/ScrollRect/Viewport/VerticalLayoutGroup/Button_Profile").gameObject;
+                    _wingButtonPrefab = MenuEx.LeftWing.transform.Find("Container/InnerContainer/WingMenu/ScrollRect/Viewport/VerticalLayoutGroup/Button_Profile").gameObject;
                 }
                 return _wingButtonPrefab;
             }
@@ -53,7 +53,7 @@ namespace ReMod.Core.UI.Wings
         public ReWingButton(string text, string tooltip, Action onClick, Sprite sprite = null, bool left = true,
             bool arrow = true, bool background = true, bool separator = false) :
             this(text, tooltip, onClick,
-                (left ? QuickMenuEx.LeftWing : QuickMenuEx.RightWing).transform.Find("Container/InnerContainer/WingMenu/ScrollRect/Viewport/VerticalLayoutGroup"), sprite, arrow, background, separator)
+                (left ? MenuEx.LeftWing : MenuEx.RightWing).transform.Find("Container/InnerContainer/WingMenu/ScrollRect/Viewport/VerticalLayoutGroup"), sprite, arrow, background, separator)
         {
         }
 

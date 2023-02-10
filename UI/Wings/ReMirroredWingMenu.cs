@@ -32,8 +32,8 @@ namespace ReMod.Core.UI.Wings
             bool background = true, bool separator = false)
         {
             return new ReMirroredWingMenu(text, tooltip,
-                QuickMenuEx.LeftWing.transform.Find("Container/InnerContainer/WingMenu/ScrollRect/Viewport/VerticalLayoutGroup"),
-                QuickMenuEx.RightWing.transform.Find("Container/InnerContainer/WingMenu/ScrollRect/Viewport/VerticalLayoutGroup"),
+                MenuEx.LeftWing.transform.Find("Container/InnerContainer/WingMenu/ScrollRect/Viewport/VerticalLayoutGroup"),
+                MenuEx.RightWing.transform.Find("Container/InnerContainer/WingMenu/ScrollRect/Viewport/VerticalLayoutGroup"),
                 sprite, arrow, background, separator);
         }
 

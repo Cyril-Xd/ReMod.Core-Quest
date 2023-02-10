@@ -13,7 +13,7 @@ using VRC.UI.Elements.Menus;
 
 namespace ReMod.Core.VRChat
 {
-    public static class QuickMenuEx
+    public static class MenuEx
     {
         public static IEnumerable<Type> TryGetTypes(this Assembly asm)
         {
@@ -76,7 +76,7 @@ namespace ReMod.Core.VRChat
                             }
                         }
 
-                        while (ReferenceEquals(QuickMenuEx._getUserInterface, null)) yield return null;
+                        while (ReferenceEquals(MenuEx._getUserInterface, null)) yield return null;
                     }
                 }
                 
@@ -106,7 +106,7 @@ namespace ReMod.Core.VRChat
             }
         }
         
-        public static GameObject UserInterfaceSaved;
+        
         
         private static VRC.UI.Elements.MainMenu _mainMenuInstance;
 
@@ -187,6 +187,20 @@ namespace ReMod.Core.VRChat
                 }
 
                 return _menuStateCtrl;
+            }
+        }
+        private static MenuStateController _mmenuStateCtrl;
+
+        public static MenuStateController MMenuStateCtrl
+        {
+            get
+            {
+                if (_mmenuStateCtrl == null)
+                {
+                    _mmenuStateCtrl = MMInstance.transform.GetComponent<MenuStateController>();
+                }
+
+                return _mmenuStateCtrl;
             }
         }
 

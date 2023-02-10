@@ -24,7 +24,7 @@ namespace ReMod.Core.UI.QuickMenu
             }
         }
 
-        public ReMenuSlider(string text, string tooltip, Action<float> onSlide, Transform parent, bool reset = false, float defaultValue = 0, float minValue = 0, float maxValue = 10, string color = "#ffffff") : base(QuickMenuEx.SliderPrefab, parent, $"Slider_{text}")
+        public ReMenuSlider(string text, string tooltip, Action<float> onSlide, Transform parent, bool reset = false, float defaultValue = 0, float minValue = 0, float maxValue = 10, string color = "#ffffff") : base(MenuEx.SliderPrefab, parent, $"Slider_{text}")
         {
             Object.DestroyImmediate(GameObject.GetComponent<UIInvisibleGraphic>()); // Fix for having clickable area overlap main quickmenu ui
 

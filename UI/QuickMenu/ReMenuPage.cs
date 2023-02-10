@@ -21,14 +21,14 @@ namespace ReMod.Core.UI.QuickMenu
             {
                 if (_menuPrefab == null)
                 {
-                    _menuPrefab = QuickMenuEx.Instance.transform.Find("CanvasGroup/Container/Window/QMParent/Menu_DevTools").gameObject;
+                    _menuPrefab = MenuEx.Instance.transform.Find("CanvasGroup/Container/Window/QMParent/Menu_DevTools").gameObject;
                 }
                 
                 return _menuPrefab;
             }
         }
 
-        private static int SiblingIndex => QuickMenuEx.Instance.transform.Find("CanvasGroup/Container/Window/QMParent/Modal_AddMessage").GetSiblingIndex();
+        private static int SiblingIndex => MenuEx.Instance.transform.Find("CanvasGroup/Container/Window/QMParent/Modal_AddMessage").GetSiblingIndex();
 
         public event Action OnOpen;
         public event Action OnClose;
@@ -39,7 +39,7 @@ namespace ReMod.Core.UI.QuickMenu
 
         public UIPage UiPage { get; }
 
-        public ReMenuPage(string text, bool isRoot = false, string color = "#ffffff") : base(MenuPrefab, QuickMenuEx.MenuParent, $"Menu_{text}", false)
+        public ReMenuPage(string text, bool isRoot = false, string color = "#ffffff") : base(MenuPrefab, MenuEx.MenuParent, $"Menu_{text}", false)
         {
             Object.DestroyImmediate(GameObject.GetComponent<DevMenu>());
 
@@ -74,7 +74,7 @@ namespace ReMod.Core.UI.QuickMenu
             // Set up UIPage
             UiPage = GameObject.AddComponent<UIPage>();
             UiPage.field_Public_String_0 = $"QuickMenuReMod{menuName}";
-            UiPage.field_Protected_MenuStateController_0 = QuickMenuEx.MenuStateCtrl;
+            UiPage.field_Protected_MenuStateController_0 = MenuEx.MenuStateCtrl;
             UiPage.field_Private_List_1_UIPage_0 = new Il2CppSystem.Collections.Generic.List<UIPage>();
             UiPage.field_Private_List_1_UIPage_0.Add(UiPage);
             UiPage.GetComponent<Canvas>().enabled = true; // Fix for Late Menu Creation
@@ -117,13 +117,13 @@ namespace ReMod.Core.UI.QuickMenu
             scrollRect.verticalScrollbarVisibility = ScrollRect.ScrollbarVisibility.Permanent;
             scrollRect.viewport.GetComponent<RectMask2D>().enabled = true;
 
-            QuickMenuEx.MenuStateCtrl.field_Private_Dictionary_2_String_UIPage_0.Add(UiPage.field_Public_String_0, UiPage);
+            MenuEx.MenuStateCtrl.field_Private_Dictionary_2_String_UIPage_0.Add(UiPage.field_Public_String_0, UiPage);
 
             if (isRoot)
             {
-                var rootPages = QuickMenuEx.MenuStateCtrl.field_Public_ArrayOf_UIPage_0.ToList();
+                var rootPages = MenuEx.MenuStateCtrl.field_Public_ArrayOf_UIPage_0.ToList();
                 rootPages.Add(UiPage);
-                QuickMenuEx.MenuStateCtrl.field_Public_ArrayOf_UIPage_0 = rootPages.ToArray();
+                MenuEx.MenuStateCtrl.field_Public_ArrayOf_UIPage_0 = rootPages.ToArray();
             }
 
             var listener = GameObject.AddComponent<EnableDisableListener>();
@@ -134,7 +134,7 @@ namespace ReMod.Core.UI.QuickMenu
         public ReMenuPage(Transform transform) : base(transform)
         {
             UiPage = GameObject.GetComponent<UIPage>();
-            _isRoot = QuickMenuEx.MenuStateCtrl.field_Public_ArrayOf_UIPage_0.Contains(UiPage);
+            _isRoot = MenuEx.MenuStateCtrl.field_Public_ArrayOf_UIPage_0.Contains(UiPage);
             var scrollRect = RectTransform.Find("Scrollrect").GetComponent<ScrollRect>();
             _container = scrollRect.content;
         }
@@ -142,7 +142,7 @@ namespace ReMod.Core.UI.QuickMenu
         public void Open()
         {
             UiPage.gameObject.active = true;
-            QuickMenuEx.MenuStateCtrl.Method_Public_Void_String_ObjectPublicStBoAc1ObObUnique_Boolean_EnumNPublicSealedvaNoLeRiBoIn6vUnique_0(UiPage.field_Public_String_0);
+            MenuEx.MenuStateCtrl.Method_Public_Void_String_ObjectPublicStBoAc1ObObUnique_Boolean_EnumNPublicSealedvaNoLeRiBoIn6vUnique_0(UiPage.field_Public_String_0);
 
             OnOpen?.Invoke();
         }
@@ -214,13 +214,13 @@ namespace ReMod.Core.UI.QuickMenu
 
         public ReMenuPage GetMenuPage(string name)
         {
-            var transform = QuickMenuEx.MenuParent.Find(GetCleanName($"Menu_{name}"));
+            var transform = MenuEx.MenuParent.Find(GetCleanName($"Menu_{name}"));
             return transform == null ? null : new ReMenuPage(transform);
         }
 
         public ReCategoryPage GetCategoryPage(string name)
         {
-            var transform = QuickMenuEx.MenuParent.Find(GetCleanName($"Menu_{name}"));
+            var transform = MenuEx.MenuParent.Find(GetCleanName($"Menu_{name}"));
             return transform == null ? null : new ReCategoryPage(transform);
         }
         public ReMenuPage ToMenuPage(string name, string tooltip = "", Sprite sprite = null)

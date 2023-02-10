@@ -1,12 +1,8 @@
-﻿using MelonLoader;
-using ReMod.Core.Managers;
-using ReMod.Core.UI.QuickMenu;
-using ReMod.Core.VRChat;
+﻿using ReMod.Core.VRChat;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
 using VRC.UI.Elements.Controls;
-using Object = UnityEngine.Object;
 
 namespace ReMod.Core.UI.MainMenu
 {
@@ -19,7 +15,7 @@ namespace ReMod.Core.UI.MainMenu
             {
                 if (_mmtabButtonPrefab == null)
                 {
-                    _mmtabButtonPrefab = QuickMenuEx.MMenuTabs.transform.Find("Page_Settings").gameObject;
+                    _mmtabButtonPrefab = MenuEx.MMenuTabs.transform.Find("Page_Settings").gameObject;
                 }
                 return _mmtabButtonPrefab;
             }
@@ -27,14 +23,13 @@ namespace ReMod.Core.UI.MainMenu
 
         protected ReMMTab(string name, string tooltip, string pageName, Sprite sprite) : base(MMTabButtonPrefab, MMTabButtonPrefab.transform.parent, $"Page_{name}")
         {
-            var menuTab = MMTabButtonPrefab.gameObject;
-            menuTab.name = GetCleanName($"MainMenuReMod{pageName}");
-            var menuTabComp = menuTab.GetComponent<MenuTab>();           
-            menuTabComp.field_Private_MenuStateController_0 = QuickMenuEx.MenuStateCtrl;
+            var menuTab = RectTransform.GetComponent<MenuTab>();
+            menuTab.field_Public_String_0 = GetCleanName($"MainMenuReMod{pageName}");                    
+            menuTab.field_Private_MenuStateController_0 = MenuEx.MMenuStateCtrl;
 
             var button = GameObject.GetComponent<Button>();
             button.onClick = new Button.ButtonClickedEvent();
-            button.onClick.AddListener(new Action(menuTabComp.ShowTabContent));
+            button.onClick.AddListener(new Action(menuTab.ShowTabContent));
 
             var uiTooltip = GameObject.GetComponent<VRC.UI.Elements.Tooltips.UiTooltip>();
             uiTooltip.field_Public_String_0 = tooltip;

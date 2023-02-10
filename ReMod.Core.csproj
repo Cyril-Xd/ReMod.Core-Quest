@@ -29,6 +29,7 @@
     <Compile Include="UI\ActionMenu\ActionMenuAPI.cs" />
     <Compile Include="UI\ActionMenu\ActionMenuButton.cs" />
     <Compile Include="UI\ActionMenu\ActionMenuPage.cs" />
+    <Compile Include="UI\MainMenu\ReMMCategory.cs" />
     <Compile Include="UI\MainMenu\ReMMPage.cs" />
     <Compile Include="UI\MainMenu\IButtonSystem.cs" />
     <Compile Include="UI\MainMenu\ReMMTab.cs" />

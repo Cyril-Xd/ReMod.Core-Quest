@@ -16,7 +16,7 @@ namespace ReMod.Core.UI.QuickMenu
             {
                 if (_headerPrefab == null)
                 {
-                    _headerPrefab = QuickMenuEx.Instance.transform
+                    _headerPrefab = MenuEx.Instance.transform
                         .Find("CanvasGroup/Container/Window/QMParent/Menu_Dashboard/ScrollRect").GetComponent<ScrollRect>().content
                         .Find("Header_QuickActions").gameObject;
                 }
@@ -58,7 +58,7 @@ namespace ReMod.Core.UI.QuickMenu
             {
                 if (_headerPrefab == null)
                 {
-                    _headerPrefab = QuickMenuEx.Instance.transform
+                    _headerPrefab = MenuEx.Instance.transform
                         .Find("CanvasGroup/Container/Window/QMParent/Menu_Settings/Panel_QM_ScrollRect").GetComponent<ScrollRect>().content
                         .Find("QM_Foldout_UI_Elements").gameObject;
                 }
@@ -94,7 +94,7 @@ namespace ReMod.Core.UI.QuickMenu
             {
                 if (_containerPrefab == null)
                 {
-                    _containerPrefab = QuickMenuEx.Instance.transform
+                    _containerPrefab = MenuEx.Instance.transform
                         .Find("CanvasGroup/Container/Window/QMParent/Menu_Dashboard/ScrollRect").GetComponent<ScrollRect>().content
                         .Find("Buttons_QuickActions").gameObject;
                 }
@@ -248,13 +248,13 @@ namespace ReMod.Core.UI.QuickMenu
 
         public ReMenuPage GetMenuPage(string name)
         {
-            var transform = QuickMenuEx.MenuParent.Find(UiElement.GetCleanName($"Menu_{name}"));
+            var transform = MenuEx.MenuParent.Find(UiElement.GetCleanName($"Menu_{name}"));
             return transform == null ? null : new ReMenuPage(transform);
         }
 
         public ReCategoryPage GetCategoryPage(string name)
         {
-            var transform = QuickMenuEx.MenuParent.Find(UiElement.GetCleanName($"Menu_{name}"));
+            var transform = MenuEx.MenuParent.Find(UiElement.GetCleanName($"Menu_{name}"));
             return transform == null ? null : new ReCategoryPage(transform);
         }
 

@@ -21,23 +21,23 @@ namespace ReMod.Core.Managers
             }
             if (crxcmodule)
             {
-                var localMenu = new ReMenuPage(QuickMenuEx.CRXCMenu.transform);
+                var localMenu = new ReMenuPage(MenuEx.CRXCMenu.transform);
                 MainMenu = localMenu.AddMenuPage($"{menuName}");
             }
 
             if (createTargetMenu)
             {
-                var localMenu = new ReCategoryPage(QuickMenuEx.SelectedUserLocal.transform);
+                var localMenu = new ReCategoryPage(MenuEx.SelectedUserLocal.transform);
                 TargetMenu = localMenu.AddCategory($"{menuName}");
             }
             if (createMainMenu)
             {
-                var localMenu = new ReCategoryPage(QuickMenuEx.DashboardMenu.transform);
+                var localMenu = new ReCategoryPage(MenuEx.DashboardMenu.transform);
                 LaunchPad = localMenu.AddCategory($"{menuName}");
             }
             if (createBigMenu)
             {
-                BigMenu = new ReMMenuPage(menuName, true);
+                BigMenu = new ReMMenuPage(menuName, menuSprite, true);
                 ReMMTab.Create(menuName, $"Open the {menuName} menu.", menuName, menuSprite);
             }
         }

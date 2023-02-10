@@ -26,7 +26,7 @@ namespace ReMod.Core.UI.Wings
             {
                 if (_wingMenuPrefab == null)
                 {
-                    _wingMenuPrefab = QuickMenuEx.LeftWing.transform.Find("Container/InnerContainer/WingMenu").gameObject;
+                    _wingMenuPrefab = MenuEx.LeftWing.transform.Find("Container/InnerContainer/WingMenu").gameObject;
                 }
                 return _wingMenuPrefab;
             }
@@ -38,11 +38,11 @@ namespace ReMod.Core.UI.Wings
         private readonly GameObject _wing;
         private readonly string _menuName;
         
-        public ReWingMenu(string text, bool left = true) : base(WingMenuPrefab, (left ? QuickMenuEx.LeftWing : QuickMenuEx.RightWing).transform.Find("Container/InnerContainer/"), text, false)
+        public ReWingMenu(string text, bool left = true) : base(WingMenuPrefab, (left ? MenuEx.LeftWing : MenuEx.RightWing).transform.Find("Container/InnerContainer/"), text, false)
         {
             _menuName = GetCleanName(text);
             WingType = left;
-            _wing = WingType ? QuickMenuEx.LeftWing : QuickMenuEx.RightWing;
+            _wing = WingType ? MenuEx.LeftWing : MenuEx.RightWing;
 
             var headerTransform = RectTransform.GetChild(0);
             var titleText = headerTransform.GetComponentInChildren<TextMeshProUGUI>();

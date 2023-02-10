@@ -22,7 +22,7 @@ namespace ReMod.Core.UI.MainMenu
         }
         public ReMMUserButton(string name, string tooltip, Action onClick, Sprite icon)
         {
-            var toinst = QuickMenuEx.userInterface.transform.Find("Canvas_MainMenu(Clone)/Container/MMParent/Menu_UserDetail/ScrollRect/Viewport/VerticalLayoutGroup/Row3/CellGrid_MM_Content/JoinBtn");
+            var toinst = MenuEx.userInterface.transform.Find("Canvas_MainMenu(Clone)/Container/MMParent/Menu_UserDetail/ScrollRect/Viewport/VerticalLayoutGroup/Row3/CellGrid_MM_Content/JoinBtn");
             var inst = GameObject.Instantiate(toinst, toinst.parent).gameObject;
             inst.name = "MMUButton_" + name;
             var txt = inst.transform.Find("Text_ButtonName").GetComponent<TMPro.TextMeshProUGUI>();
@@ -67,7 +67,7 @@ namespace ReMod.Core.UI.MainMenu
         }
         public ReMMAvatarButton(string name, string tooltip, Action onClick, Sprite icon)
         {
-            var toinst = QuickMenuEx.userInterface.transform.Find("Canvas_MainMenu(Clone)/Container/MMParent/Menu_Avatars/Menu_MM_DynamicSidePanel/Panel_SectionList/ScrollRect_Navigation/ScrollRect_Content/Panel_SelectedAvatar/ScrollRect/Viewport/VerticalLayoutGroup/Button_AvatarDetails");
+            var toinst = MenuEx.userInterface.transform.Find("Canvas_MainMenu(Clone)/Container/MMParent/Menu_Avatars/Menu_MM_DynamicSidePanel/Panel_SectionList/ScrollRect_Navigation/ScrollRect_Content/Panel_SelectedAvatar/ScrollRect/Viewport/VerticalLayoutGroup/Button_AvatarDetails");
             var inst = GameObject.Instantiate(toinst, toinst.parent).gameObject;
             inst.name = "MMAviButton_" + name;
             var txt = inst.transform.Find("Text_ButtonName").GetComponent<TMPro.TextMeshProUGUI>();

@@ -29,7 +29,7 @@ namespace ReMod.Core.UI.Wings
 
         private Sprite GetCurrentIcon()
         {
-            return _state ? QuickMenuEx.OnIconSprite : QuickMenuEx.OffIconSprite;
+            return _state ? MenuEx.OnIconSprite : MenuEx.OffIconSprite;
         }
 
         public void Toggle(bool b, bool callback = true)
