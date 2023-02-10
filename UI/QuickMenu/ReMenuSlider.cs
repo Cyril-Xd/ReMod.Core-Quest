@@ -62,5 +62,15 @@ namespace ReMod.Core.UI.QuickMenu
         {
             _sliderComponent.Set(value, callback);
         }
+        
+        public void SetNewMaxValue(float value)
+        {
+            _sliderComponent.maxValue = value;
+        }
+        
+        public void SetNewMinValue(float value)
+        {
+            _sliderComponent.minValue = value;
+        }
     }
 }
