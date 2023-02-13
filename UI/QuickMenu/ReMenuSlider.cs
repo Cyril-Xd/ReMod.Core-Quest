@@ -72,5 +72,10 @@ namespace ReMod.Core.UI.QuickMenu
         {
             _sliderComponent.minValue = value;
         }
+        
+        public float CurrentValue()
+        {
+            return _sliderComponent.value;
+        }
     }
 }
