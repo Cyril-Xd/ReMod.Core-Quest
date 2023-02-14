@@ -6,60 +6,45 @@ namespace ReMod.Core.UI.ActionMenu
 {
     public class ActionMenuButton
     {
-        public PedalOption currentPedalOption;
-        public string buttonText;
-        public Texture2D buttonIcon;
-        public Func<bool> buttonAction;
+        internal Func<bool> buttonAction { get; }
+        internal PedalOption currentPedalOption { get; set; }
+        internal string buttonText { get; private set; }
+        internal Texture2D buttonIcon { get; private set; }
 
-        public ActionMenuButton(ActionMenuBaseMenu baseMenu, string text, Action action, Sprite icon = null)
+        internal ActionMenuButton(string text, Action action, Sprite icon = null)
         {
+            if (icon == null) icon = null; // todo ButtonSprite
             buttonText = text;
-            if (icon != null)
-                buttonIcon = icon.texture;
-            buttonAction = delegate
-            {
+            buttonIcon = icon.texture;
+            buttonAction = () => {
                 action();
                 return true;
             };
-
-            if (baseMenu == ActionMenuBaseMenu.MainMenu)
-            {
-                mainMenuButtons.Add(this);
-            }
+            mainMenuButtons.Add(this);
         }
 
-        public ActionMenuButton(ActionMenuPage basePage, string text, Action action, Sprite icon = null)
+        internal ActionMenuButton(ActionMenuPage basePage, string text, Action action, Sprite icon = null)
         {
+            if (icon == null) icon = null; // todo ButtonSprite
             buttonText = text;
-            if (icon != null)
-                buttonIcon = icon.texture;
-            buttonAction = delegate
-            {
+            buttonIcon = icon.texture;
+            buttonAction = () => {
                 action();
                 return true;
             };
-
             basePage.buttons.Add(this);
         }
 
-        public void SetButtonText(string newText)
+        internal void SetButtonText(string newText)
         {
             buttonText = newText;
-
-            if (currentPedalOption != null)
-            {
-                currentPedalOption.prop_String_0 = newText;
-            }
+            if (currentPedalOption != null) currentPedalOption.prop_String_0 = newText;
         }
 
-        public void SetIcon(Texture2D newTexture)
+        internal void SetIcon(Sprite newTexture)
         {
-            buttonIcon = newTexture;
-
-            if (currentPedalOption != null)
-            {
-                currentPedalOption.Method_Public_Virtual_Final_New_Void_Texture2D_0(newTexture);
-            }
+            buttonIcon = newTexture.texture;
+            if (currentPedalOption != null) currentPedalOption.Method_Public_Virtual_Final_New_Void_Texture2D_0(newTexture.texture);
         }
     }
 }
