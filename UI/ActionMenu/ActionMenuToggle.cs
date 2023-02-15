@@ -15,20 +15,23 @@ namespace ReMod.Core.UI.ActionMenu
         {
             get
             {
-                if (_onImage == null) _onImage = ResourceManager.fetchSpriteFromBundledResource("ReMod.Core.Resources.switchOnIcon.png", 300, 250);
+                if (_onImage == null) _onImage = defaultOnImage;
                 return _onImage; 
             }
         }
 
         internal Sprite offImage 
         {
-            get 
-            { 
-                if (_offImage == null) _offImage = ResourceManager.fetchSpriteFromBundledResource("ReMod.Core.Resources.switchOffIcon.png", 300, 250);
+            get
+            {
+                if (_offImage == null) _offImage = defaultOffImage;
                 return _offImage; 
             } 
         }
-
+        
+        private static readonly Sprite defaultOnImage = ResourceManager.fetchSpriteFromBundledResource("ReMod.Core.Resources.switchOnIcon.png", 300, 250);
+        private static readonly Sprite defaultOffImage = ResourceManager.fetchSpriteFromBundledResource("ReMod.Core.Resources.switchOffIcon.png", 300, 250);
+        
         public ActionMenuToggle(ActionMenuPage basePage, string text, Action<bool> action, bool state = false, Sprite onicon = null, Sprite officon = null) 
         {
             if (onicon != null) _onImage = onicon;
