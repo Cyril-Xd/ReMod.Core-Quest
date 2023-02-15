@@ -1,55 +1,52 @@
 ﻿using System;
+using ReMod.Core.Managers;
 using UnityEngine;
 
 namespace ReMod.Core.UI.ActionMenu
 {
     public class ActionMenuToggle
     {
-        private static Sprite ondata, offdata;
+        public bool State { get; set; }
+        public PedalOption currentPedalOption => actionButton.currentPedalOption;
+        private ActionMenuButton actionButton { get; }
+        private Sprite _onImage, _offImage;
 
-        public static Sprite onImageData 
+        internal Sprite onImage 
         {
             get
-            { 
-                if (ondata == null) ondata = null; // todo ToggleOnSprite
-                return ondata; 
+            {
+                if (_onImage == null) _onImage = ResourceManager.fetchSpriteFromBundledResource("ReMod.Core.Resources.switchOnIcon.png", 300, 250);
+                return _onImage; 
             }
         }
 
-        public static Sprite offImageData 
+        internal Sprite offImage 
         {
             get 
             { 
-                if (offdata == null) offdata = null; // todo ToggleOffSprite
-                return offdata; 
+                if (_offImage == null) _offImage = ResourceManager.fetchSpriteFromBundledResource("ReMod.Core.Resources.switchOffIcon.png", 300, 250);
+                return _offImage; 
             } 
         }
 
-        private Sprite OnImage, OffImage;
-        internal ActionMenuButton actionButton { get; }
-        internal bool State { get; set; }
-
-        internal ActionMenuToggle(ActionMenuPage basePage, string text, Action<bool> action, bool state = false, Sprite onicon = null, Sprite officon = null) 
+        public ActionMenuToggle(ActionMenuPage basePage, string text, Action<bool> action, bool state = false, Sprite onicon = null, Sprite officon = null) 
         {
-            if (onicon == null) onicon = onImageData;
-            if (officon == null) officon = offImageData;
-            var img = state ? onicon : officon;
-            OnImage = onicon;
-            OffImage = officon;
-
+            if (onicon != null) _onImage = onicon;
+            if (officon != null) _offImage = officon;
+            
             State = state;
             actionButton = new ActionMenuButton(basePage, text, () => 
             {
                 State = !State;
                 action.Invoke(State);
-                actionButton?.SetIcon(State ? OnImage : OffImage);
-            }, img); 
+                actionButton?.SetIcon(State ? onImage : offImage);
+            }, state ? onicon : officon);
         }
 
-        internal void SetState(bool newState) 
+        public void SetState(bool newState) 
         {
             State = newState;
-            actionButton.SetIcon(newState ? OnImage : OffImage);
+            actionButton.SetIcon(newState ? onImage : offImage);
         }
     }
 }

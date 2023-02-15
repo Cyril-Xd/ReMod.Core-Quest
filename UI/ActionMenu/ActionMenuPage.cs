@@ -8,13 +8,13 @@ namespace ReMod.Core.UI.ActionMenu
 {
     public class ActionMenuPage
     {
+        public ActionMenuPage previousPage { get; }
+        public ActionMenuButton menuEntryButton { get; }
         internal List<ActionMenuButton> buttons = new();
-        internal ActionMenuPage previousPage { get; }
-        internal ActionMenuButton menuEntryButton { get; }
 
-        internal ActionMenuPage(string buttonText, Sprite buttonIcon = null) => menuEntryButton = new ActionMenuButton(buttonText, OpenMenu, buttonIcon);
+        public ActionMenuPage(string buttonText, Sprite buttonIcon = null) => menuEntryButton = new ActionMenuButton(buttonText, OpenMenu, buttonIcon);
 
-        internal ActionMenuPage(ActionMenuPage basePage, string buttonText, Sprite buttonIcon = null) 
+        public ActionMenuPage(ActionMenuPage basePage, string buttonText, Sprite buttonIcon = null) 
         {
             previousPage = basePage;
             menuEntryButton = new ActionMenuButton(previousPage, buttonText, OpenMenu, buttonIcon);

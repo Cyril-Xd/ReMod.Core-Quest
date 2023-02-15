@@ -6,16 +6,15 @@ namespace ReMod.Core.UI.ActionMenu
 {
     public class ActionMenuButton
     {
+        public PedalOption currentPedalOption { get; set; }
         internal Func<bool> buttonAction { get; }
-        internal PedalOption currentPedalOption { get; set; }
         internal string buttonText { get; private set; }
         internal Texture2D buttonIcon { get; private set; }
 
-        internal ActionMenuButton(string text, Action action, Sprite icon = null)
+        public ActionMenuButton(string text, Action action, Sprite icon = null)
         {
-            if (icon == null) icon = null; // todo ButtonSprite
             buttonText = text;
-            buttonIcon = icon.texture;
+            buttonIcon = icon != null ? icon.texture : null;
             buttonAction = () => {
                 action();
                 return true;
@@ -23,11 +22,10 @@ namespace ReMod.Core.UI.ActionMenu
             mainMenuButtons.Add(this);
         }
 
-        internal ActionMenuButton(ActionMenuPage basePage, string text, Action action, Sprite icon = null)
+        public ActionMenuButton(ActionMenuPage basePage, string text, Action action, Sprite icon = null)
         {
-            if (icon == null) icon = null; // todo ButtonSprite
             buttonText = text;
-            buttonIcon = icon.texture;
+            buttonIcon = icon != null ? icon.texture : null;
             buttonAction = () => {
                 action();
                 return true;
@@ -35,13 +33,13 @@ namespace ReMod.Core.UI.ActionMenu
             basePage.buttons.Add(this);
         }
 
-        internal void SetButtonText(string newText)
+        public void SetButtonText(string newText)
         {
             buttonText = newText;
             if (currentPedalOption != null) currentPedalOption.prop_String_0 = newText;
         }
 
-        internal void SetIcon(Sprite newTexture)
+        public void SetIcon(Sprite newTexture)
         {
             buttonIcon = newTexture.texture;
             if (currentPedalOption != null) currentPedalOption.Method_Public_Virtual_Final_New_Void_Texture2D_0(newTexture.texture);

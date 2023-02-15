@@ -75,6 +75,8 @@
     <Compile Include="XrefUtils.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resources/switchOnIcon.png" />
+	<EmbeddedResource Include="Resources/switchOffIcon.png" />
     <Reference Include="0Harmony">
       <HintPath>..\..\ReMod.Core-master1\ReMod.Core-master1\.build\Debug (AnyCPU)\Modules\net472\0Harmony.dll</HintPath>
     </Reference>

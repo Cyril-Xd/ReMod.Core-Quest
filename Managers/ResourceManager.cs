@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Reflection;
 using UnityEngine;
 
 namespace ReMod.Core.Managers
@@ -19,6 +20,23 @@ namespace ReMod.Core.Managers
             sprite.hideFlags |= HideFlags.DontUnloadUnusedAsset;
             return sprite;
         }
-
+        
+        public static Sprite fetchSpriteFromBundledResource(string path, int width, int height)
+        {
+            // Fetch Byte[] from embedded resource
+            var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(path);
+            var memoryStream = new MemoryStream((int)stream.Length);
+            stream.CopyTo(memoryStream);
+            
+            // Create Tex2D loads  byte[] to it
+            var texture = new Texture2D(width, height);
+            if (!ImageConversion.LoadImage(texture, memoryStream.ToArray())) return null;
+            
+            // Create Sprite from Tex2D
+            var sprite = Sprite.CreateSprite(texture, new Rect(0f, 0f, texture.width, texture.height), new Vector2(0, 0), 100000f, 1000U, SpriteMeshType.FullRect, Vector4.zero, false);
+            sprite.hideFlags |= HideFlags.DontUnloadUnusedAsset;
+            
+            return sprite;
+        }
     }
 }
