@@ -130,6 +130,16 @@ namespace ReMod.Core.UI.QuickMenu
         {
             return GetCategory(title) ?? new ReMenuCategory(title, _container);
         }
+        
+        public ReMenuCategory AddCategory(string title, bool collapsible = true, string color = "#ffffff")
+        {
+            return GetCategory(title) ?? new ReMenuCategory(title, _container, collapsible, color:color);
+        }
+
+        public ReMenuCategory AddCategory(string title, string color = "#ffffff")
+        {
+            return GetCategory(title) ?? new ReMenuCategory(title, _container, color:color);
+        }
 
         public ReMenuCategory GetCategory(string name)
         {
@@ -161,9 +171,9 @@ namespace ReMod.Core.UI.QuickMenu
             return new ReMenuSliderCategory(header, sliderContainer);
         }
 
-        public static ReCategoryPage Create(string text, bool isRoot)
+        public static ReCategoryPage Create(string text, bool isRoot, string color = "#ffffff")
         {
-            return new ReCategoryPage(text, isRoot);
+            return new ReCategoryPage(text, isRoot, color);
         }
 
         private static bool _fixedLaunchpad;

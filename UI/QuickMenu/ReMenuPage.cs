@@ -146,13 +146,13 @@ namespace ReMod.Core.UI.QuickMenu
 
             OnOpen?.Invoke();
         }
-        public ReMenuLabel AddLabel(string text, string Subtitle, int FontSize = 46)
+        public ReMenuLabel AddLabel(string text, string Subtitle, int FontSize = 46, string color = "#ffffff")
         {
-            return new ReMenuLabel(_container, text, Subtitle, FontSize);
+            return new ReMenuLabel(_container, text, Subtitle, FontSize, color);
         }
-        public ReMenuButton AddButton(string text, string tooltip, Action onClick, Sprite sprite = null)
+        public ReMenuButton AddButton(string text, string tooltip, Action onClick, Sprite sprite = null, string color = "#ffffff")
         {
-            return new ReMenuButton(text, tooltip, onClick, _container, sprite);
+            return new ReMenuButton(text, tooltip, onClick, _container, sprite, color:color);
         }
 
         public ReMenuButton AddSpacer(Sprite sprite = null)
@@ -163,20 +163,20 @@ namespace ReMod.Core.UI.QuickMenu
             return spacer;
         }
 
-        public ReMenuToggle AddToggle(string text, string tooltip, Action<bool> onToggle, bool defaultValue = false)
-            => AddToggle(text, tooltip, onToggle, defaultValue, null, null);
-        public ReMenuToggle AddToggle(string text, string tooltip, ConfigValue<bool> configValue)
-            => AddToggle(text, tooltip, configValue, null, null);
-        public ReMenuToggle AddToggle(string text, string tooltip, Action<bool> onToggle, bool defaultValue = false, Sprite iconOn = null, Sprite iconOff = null)
+        public ReMenuToggle AddToggle(string text, string tooltip, Action<bool> onToggle, bool defaultValue = false, string color = "#ffffff")
+            => AddToggle(text, tooltip, onToggle, defaultValue, null, null, color);
+        public ReMenuToggle AddToggle(string text, string tooltip, ConfigValue<bool> configValue, string color = "#ffffff")
+            => AddToggle(text, tooltip, configValue, null, null, color);
+        public ReMenuToggle AddToggle(string text, string tooltip, Action<bool> onToggle, bool defaultValue = false, Sprite iconOn = null, Sprite iconOff = null, string color = "#ffffff")
         {
-            return new ReMenuToggle(text, tooltip, onToggle, _container, defaultValue, iconOn, iconOff);
+            return new ReMenuToggle(text, tooltip, onToggle, _container, defaultValue, iconOn, iconOff, color);
         }
-        public ReMenuToggle AddToggle(string text, string tooltip, ConfigValue<bool> configValue, Sprite iconOn = null, Sprite iconOff = null)
+        public ReMenuToggle AddToggle(string text, string tooltip, ConfigValue<bool> configValue, Sprite iconOn = null, Sprite iconOff = null, string color = "#ffffff")
         {
-            return new ReMenuToggle(text, tooltip, configValue.SetValue, _container, configValue, iconOn, iconOff);
+            return new ReMenuToggle(text, tooltip, configValue.SetValue, _container, configValue, iconOn, iconOff, color);
         }
 
-        public ReMenuPage AddMenuPage(string text, string tooltip = "", Sprite sprite = null)
+        public ReMenuPage AddMenuPage(string text, string tooltip = "", Sprite sprite = null, string color = "#ffffff")
         {
             var existingPage = GetMenuPage(text);
             if (existingPage != null)
@@ -184,12 +184,12 @@ namespace ReMod.Core.UI.QuickMenu
                 return existingPage;
             }
 
-            var menu = new ReMenuPage(text);
-            AddButton(text, string.IsNullOrEmpty(tooltip) ? $"Open the {text} menu" : tooltip, menu.Open, sprite);
+            var menu = new ReMenuPage(text, color:color);
+            AddButton(text, string.IsNullOrEmpty(tooltip) ? $"Open the {text} menu" : tooltip, menu.Open, sprite, color);
             return menu;
         }
 
-        public ReCategoryPage AddCategoryPage(string text, string tooltip = "", Sprite sprite = null)
+        public ReCategoryPage AddCategoryPage(string text, string tooltip = "", Sprite sprite = null, string color = "#ffffff")
         {
             var existingPage = GetCategoryPage(text);
             if (existingPage != null)
@@ -197,19 +197,19 @@ namespace ReMod.Core.UI.QuickMenu
                 return existingPage;
             }
 
-            var menu = new ReCategoryPage(text);
-            AddButton(text, string.IsNullOrEmpty(tooltip) ? $"Open the {text} menu" : tooltip, menu.Open, sprite);
+            var menu = new ReCategoryPage(text, color:color);
+            AddButton(text, string.IsNullOrEmpty(tooltip) ? $"Open the {text} menu" : tooltip, menu.Open, sprite, color);
             return menu;
         }
 
-        public void AddMenuPage(string text, string tooltip, Action<ReMenuPage> onPageBuilt, Sprite sprite = null)
+        public void AddMenuPage(string text, string tooltip, Action<ReMenuPage> onPageBuilt, Sprite sprite = null, string color = "#ffffff")
         {
-            onPageBuilt(AddMenuPage(text, tooltip, sprite));
+            onPageBuilt(AddMenuPage(text, tooltip, sprite, color));
         }
         
-        public void AddCategoryPage(string text, string tooltip, Action<ReCategoryPage> onPageBuilt, Sprite sprite = null)
+        public void AddCategoryPage(string text, string tooltip, Action<ReCategoryPage> onPageBuilt, Sprite sprite = null, string color = "#ffffff")
         {
-            onPageBuilt(AddCategoryPage(text, tooltip, sprite));
+            onPageBuilt(AddCategoryPage(text, tooltip, sprite, color));
         }
 
         public ReMenuPage GetMenuPage(string name)
@@ -229,9 +229,9 @@ namespace ReMod.Core.UI.QuickMenu
             AddButton(name, string.IsNullOrEmpty(tooltip) ? $"Open the {name} menu" : tooltip, menu.Open, sprite);
             return menu;
         }
-        public static ReMenuPage Create(string text, bool isRoot)
+        public static ReMenuPage Create(string text, bool isRoot, string color = "#ffffff")
         {
-            return new ReMenuPage(text, isRoot);
+            return new ReMenuPage(text, isRoot, color);
         }
 
         public static implicit operator ReMenuPage(Transform v)

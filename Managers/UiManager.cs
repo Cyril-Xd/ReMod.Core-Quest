@@ -12,32 +12,38 @@ namespace ReMod.Core.Managers
         public IButtonPage LaunchPad { get; }
         public IButtonSystem BigMenu { get; }
 
-        public UiManager(string menuName, Sprite menuSprite, bool createTargetMenu = true, bool createMainMenu = true, bool crxcmodule = false, bool createBigMenu = true)
+        public UiManager(string menuName, Sprite menuSprite, bool createQMTargets = true, bool createLaunchPadMenu = true, bool createMainMenu = true, bool crxcmodule = false, string color = "#ffffff")
         {
+            // Quick Menu
             if (!crxcmodule)
             {
-                MainMenu = new ReMenuPage(menuName, true);
+                MainMenu = new ReMenuPage(menuName, true, color);
                 ReTabButton.Create(menuName, $"Open the {menuName} menu.", menuName, menuSprite);
             }
-            if (crxcmodule)
+            else
             {
                 var localMenu = new ReMenuPage(MenuEx.CRXCMenu.transform);
-                MainMenu = localMenu.AddMenuPage($"{menuName}");
+                MainMenu = localMenu.AddMenuPage($"{menuName}", color:color);
             }
 
-            if (createTargetMenu)
+            // Target Menu
+            if (createQMTargets)
             {
                 var localMenu = new ReCategoryPage(MenuEx.SelectedUserLocal.transform);
-                TargetMenu = localMenu.AddCategory($"{menuName}");
+                TargetMenu = localMenu.AddCategory($"{menuName}", color);
             }
-            if (createMainMenu)
+            
+            // LaunchPad Menu
+            if (createLaunchPadMenu)
             {
                 var localMenu = new ReCategoryPage(MenuEx.DashboardMenu.transform);
-                LaunchPad = localMenu.AddCategory($"{menuName}");
+                LaunchPad = localMenu.AddCategory($"{menuName}", color);
             }
-            if (createBigMenu)
+            
+            // Main Menu
+            if (createMainMenu)
             {
-                BigMenu = new ReMMenuPage(menuName, menuSprite, true);
+                BigMenu = new ReMMenuPage(menuName, menuSprite, true, color);
                 ReMMTab.Create(menuName, $"Open the {menuName} menu.", menuName, menuSprite);
             }
         }

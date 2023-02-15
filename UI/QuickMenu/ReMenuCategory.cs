@@ -147,22 +147,21 @@ namespace ReMod.Core.UI.QuickMenu
             }
         }
 
-        public ReMenuCategory(string title, Transform parent = null, bool collapsible = true)
+        public ReMenuCategory(string title, Transform parent = null, bool collapsible = true, string color = "#ffffff")
         {
             if (collapsible)
             {
-                var header = new ReMenuHeaderCollapsible(title, parent);
+                var header = new ReMenuHeaderCollapsible("<color=" + color + ">" + title + "</color>", parent);
                 header.OnToggle += b => _buttonContainer.GameObject.SetActive(b);
                 Header = header;
             }
 
             else
             {
-                var header = new ReMenuHeader(title, parent);
+                var header = new ReMenuHeader("<color=" + color + ">" + title + "</color>", parent);
                 Header = header;
             }
-            _buttonContainer = new ReMenuButtonContainer(title, parent);
-
+            _buttonContainer = new ReMenuButtonContainer("<color=" + color + ">" + title + "</color>", parent);
         }
 
         public ReMenuCategory(ReMenuHeader headerElement, ReMenuButtonContainer container)
@@ -170,14 +169,14 @@ namespace ReMod.Core.UI.QuickMenu
             Header = headerElement;
             _buttonContainer = container;
         }
-        public ReMenuLabel AddLabel(string text, string Subtitle, int FontSize = 56)
+        public ReMenuLabel AddLabel(string text, string Subtitle, int FontSize = 56, string color = "#ffffff")
         {
-            return new ReMenuLabel(_buttonContainer.RectTransform, text, Subtitle, FontSize);
+            return new ReMenuLabel(_buttonContainer.RectTransform, text, Subtitle, FontSize, color);
         }
 
-        public ReMenuButton AddButton(string text, string tooltip, Action onClick, Sprite sprite = null)
+        public ReMenuButton AddButton(string text, string tooltip, Action onClick, Sprite sprite = null, string color = "#ffffff")
         {
-            var button = new ReMenuButton(text, tooltip, onClick, _buttonContainer.RectTransform, sprite);
+            var button = new ReMenuButton(text, tooltip, onClick, _buttonContainer.RectTransform, sprite, color:color);
             return button;
         }
         
@@ -188,22 +187,22 @@ namespace ReMod.Core.UI.QuickMenu
             return spacer;
         }
 
-        public ReMenuToggle AddToggle(string text, string tooltip, Action<bool> onToggle, bool defaultValue = false) 
-            => AddToggle(text, tooltip, onToggle, defaultValue, null, null);
-        public ReMenuToggle AddToggle(string text, string tooltip, ConfigValue<bool> configValue)
-            => AddToggle(text, tooltip, configValue, null, null);
-        public ReMenuToggle AddToggle(string text, string tooltip, Action<bool> onToggle, bool defaultValue, Sprite iconOn, Sprite iconOff)
+        public ReMenuToggle AddToggle(string text, string tooltip, Action<bool> onToggle, bool defaultValue = false, string color = "#ffffff") 
+            => AddToggle(text, tooltip, onToggle, defaultValue, null, null, color);
+        public ReMenuToggle AddToggle(string text, string tooltip, ConfigValue<bool> configValue, string color = "#ffffff")
+            => AddToggle(text, tooltip, configValue, null, null, color);
+        public ReMenuToggle AddToggle(string text, string tooltip, Action<bool> onToggle, bool defaultValue, Sprite iconOn, Sprite iconOff, string color = "#ffffff")
         {
-            var toggle = new ReMenuToggle(text, tooltip, onToggle, _buttonContainer.RectTransform, defaultValue, iconOn, iconOff);
+            var toggle = new ReMenuToggle(text, tooltip, onToggle, _buttonContainer.RectTransform, defaultValue, iconOn, iconOff, color);
             return toggle;
         }
-        public ReMenuToggle AddToggle(string text, string tooltip, ConfigValue<bool> configValue, Sprite iconOn, Sprite iconOff)
+        public ReMenuToggle AddToggle(string text, string tooltip, ConfigValue<bool> configValue, Sprite iconOn, Sprite iconOff, string color = "#ffffff")
         {
-            var toggle = new ReMenuToggle(text, tooltip, configValue.SetValue, _buttonContainer.RectTransform, configValue, iconOn, iconOff);
+            var toggle = new ReMenuToggle(text, tooltip, configValue.SetValue, _buttonContainer.RectTransform, configValue, iconOn, iconOff, color);
             return toggle;
         }
 
-        public ReMenuPage AddMenuPage(string text, string tooltip = "", Sprite sprite = null)
+        public ReMenuPage AddMenuPage(string text, string tooltip = "", Sprite sprite = null, string color = "#ffffff")
         {
             var existingPage = GetMenuPage(text);
             if (existingPage != null)
@@ -212,7 +211,7 @@ namespace ReMod.Core.UI.QuickMenu
             }
 
             var menu = new ReMenuPage(text);
-            AddButton(text, string.IsNullOrEmpty(tooltip) ? $"Open the {text} menu" : tooltip, menu.Open, sprite);
+            AddButton(text, string.IsNullOrEmpty(tooltip) ? $"Open the {text} menu" : tooltip, menu.Open, sprite, color);
             return menu;
         }
         public ReMenuPage ToMenuPage(string name, string tooltip = "", Sprite sprite = null)
@@ -221,7 +220,7 @@ namespace ReMod.Core.UI.QuickMenu
             AddButton(name, string.IsNullOrEmpty(tooltip) ? $"Open the {name} menu" : tooltip, menu.Open, sprite);
             return menu;
         }
-        public ReCategoryPage AddCategoryPage(string text, string tooltip = "", Sprite sprite = null)
+        public ReCategoryPage AddCategoryPage(string text, string tooltip = "", Sprite sprite = null, string color = "#ffffff")
         {
             var existingPage = GetCategoryPage(text);
             if (existingPage != null)
@@ -229,19 +228,19 @@ namespace ReMod.Core.UI.QuickMenu
                 return existingPage;
             }
 
-            var menu = new ReCategoryPage(text);
-            AddButton(text, string.IsNullOrEmpty(tooltip) ? $"Open the {text} menu" : tooltip, menu.Open, sprite);
+            var menu = new ReCategoryPage(text, color:color);
+            AddButton(text, string.IsNullOrEmpty(tooltip) ? $"Open the {text} menu" : tooltip, menu.Open, sprite, color);
             return menu;
         }
 
-        public void AddMenuPage(string text, string tooltip, Action<ReMenuPage> onPageBuilt, Sprite sprite = null)
+        public void AddMenuPage(string text, string tooltip, Action<ReMenuPage> onPageBuilt, Sprite sprite = null, string color = "#ffffff")
         {
-            onPageBuilt(AddMenuPage(text, tooltip, sprite));
+            onPageBuilt(AddMenuPage(text, tooltip, sprite, color));
         }
 
-        public void AddCategoryPage(string text, string tooltip, Action<ReCategoryPage> onPageBuilt, Sprite sprite = null)
+        public void AddCategoryPage(string text, string tooltip, Action<ReCategoryPage> onPageBuilt, Sprite sprite = null, string color = "#ffffff")
         {
-            onPageBuilt(AddCategoryPage(text, tooltip, sprite));
+            onPageBuilt(AddCategoryPage(text, tooltip, sprite, color));
         }
 
         public RectTransform RectTransform => _buttonContainer.RectTransform;
