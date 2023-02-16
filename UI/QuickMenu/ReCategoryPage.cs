@@ -160,6 +160,16 @@ namespace ReMod.Core.UI.QuickMenu
         {
             return GetSliderCategory(title) ?? new ReMenuSliderCategory(title, _container, collapsible);
         }
+        
+        public ReMenuSliderCategory AddSliderCategory(string title, string color = "#ffffff")
+        {
+            return AddSliderCategory(title, true, color);
+        }
+
+        public ReMenuSliderCategory AddSliderCategory(string title, bool collapsible = true, string color = "#ffffff")
+        {
+            return GetSliderCategory(title) ?? new ReMenuSliderCategory(title, _container, collapsible, color);
+        }
 
         public ReMenuSliderCategory GetSliderCategory(string name)
         {

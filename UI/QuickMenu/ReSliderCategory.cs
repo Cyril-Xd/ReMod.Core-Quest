@@ -64,22 +64,22 @@ namespace ReMod.Core.UI.QuickMenu
             }
         }
 
-        public ReMenuSliderCategory(string title, Transform parent = null, bool collapsible = true)
+        public ReMenuSliderCategory(string title, Transform parent = null, bool collapsible = true, string color = "#ffffff")
         {
             if (collapsible)
             {
-                var header = new ReMenuHeaderCollapsible(title, parent);
+                var header = new ReMenuHeaderCollapsible("<color=" + color + ">" + title + "</color>", parent);
                 header.OnToggle += b => _sliderContainer!.GameObject.SetActive(b);
                 Header = header;
                 
             }
             else
             {
-                var header = new ReMenuHeader(title, parent);
+                var header = new ReMenuHeader("<color=" + color + ">" + title + "</color>", parent);
                 Header = header;
             }
             
-            _sliderContainer = new ReMenuSliderContainer(title, parent);
+            _sliderContainer = new ReMenuSliderContainer("<color=" + color + ">" + title + "</color>", parent);
         }
 
         public ReMenuSliderCategory(ReMenuHeader headerElement, ReMenuSliderContainer container)
