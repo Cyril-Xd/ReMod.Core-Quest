@@ -186,7 +186,9 @@ namespace ReMod.Core.UI.QuickMenu
             spacer.Background.gameObject.SetActive(false);
             return spacer;
         }
-
+        
+        public ReMenuToggle AddToggle(string text, string tooltip, Action<bool> onToggle, string color = "#ffffff") 
+            => AddToggle(text, tooltip, onToggle, false, null, null, color);
         public ReMenuToggle AddToggle(string text, string tooltip, Action<bool> onToggle, bool defaultValue = false, string color = "#ffffff") 
             => AddToggle(text, tooltip, onToggle, defaultValue, null, null, color);
         public ReMenuToggle AddToggle(string text, string tooltip, Action<bool> onToggle, bool defaultValue = false) 

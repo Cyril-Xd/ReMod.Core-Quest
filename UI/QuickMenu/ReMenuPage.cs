@@ -166,6 +166,8 @@ namespace ReMod.Core.UI.QuickMenu
 
         public ReMenuToggle AddToggle(string text, string tooltip, Action<bool> onToggle, bool defaultValue = false, string color = "#ffffff")
             => AddToggle(text, tooltip, onToggle, defaultValue, null, null, color);
+        public ReMenuToggle AddToggle(string text, string tooltip, Action<bool> onToggle, string color = "#ffffff")
+            => AddToggle(text, tooltip, onToggle, false, null, null, color);
         public ReMenuToggle AddToggle(string text, string tooltip, ConfigValue<bool> configValue)
             => AddToggle(text, tooltip, configValue, null, null);
         public ReMenuToggle AddToggle(string text, string tooltip, Action<bool> onToggle, bool defaultValue = false, Sprite iconOn = null, Sprite iconOff = null, string color = "#ffffff")
