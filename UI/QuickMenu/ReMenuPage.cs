@@ -150,6 +150,7 @@ namespace ReMod.Core.UI.QuickMenu
         {
             return new ReMenuLabel(_container, text, Subtitle, FontSize, color);
         }
+        
         public ReMenuButton AddButton(string text, string tooltip, Action onClick, Sprite sprite = null, string color = "#ffffff")
         {
             return new ReMenuButton(text, tooltip, onClick, _container, sprite, color:color);
@@ -165,15 +166,27 @@ namespace ReMod.Core.UI.QuickMenu
 
         public ReMenuToggle AddToggle(string text, string tooltip, Action<bool> onToggle, bool defaultValue = false, string color = "#ffffff")
             => AddToggle(text, tooltip, onToggle, defaultValue, null, null, color);
-        public ReMenuToggle AddToggle(string text, string tooltip, ConfigValue<bool> configValue, string color = "#ffffff")
-            => AddToggle(text, tooltip, configValue, null, null, color);
+        public ReMenuToggle AddToggle(string text, string tooltip, ConfigValue<bool> configValue)
+            => AddToggle(text, tooltip, configValue, null, null);
         public ReMenuToggle AddToggle(string text, string tooltip, Action<bool> onToggle, bool defaultValue = false, Sprite iconOn = null, Sprite iconOff = null, string color = "#ffffff")
         {
             return new ReMenuToggle(text, tooltip, onToggle, _container, defaultValue, iconOn, iconOff, color);
         }
+        public ReMenuToggle AddToggle(string text, string tooltip, Action<bool> onToggle, bool defaultValue = false)
+        {
+            return new ReMenuToggle(text, tooltip, onToggle, _container, defaultValue);
+        }
+        public ReMenuToggle AddToggle(string text, string tooltip, Action<bool> onToggle)
+        {
+            return new ReMenuToggle(text, tooltip, onToggle, _container, false);
+        }
         public ReMenuToggle AddToggle(string text, string tooltip, ConfigValue<bool> configValue, Sprite iconOn = null, Sprite iconOff = null, string color = "#ffffff")
         {
             return new ReMenuToggle(text, tooltip, configValue.SetValue, _container, configValue, iconOn, iconOff, color);
+        }
+        public ReMenuToggle AddToggle(string text, string tooltip, ConfigValue<bool> configValue, string color = "#ffffff")
+        {
+            return new ReMenuToggle(text, tooltip, configValue.SetValue, _container, configValue, color: color);
         }
 
         public ReMenuPage AddMenuPage(string text, string tooltip = "", Sprite sprite = null, string color = "#ffffff")

@@ -189,16 +189,32 @@ namespace ReMod.Core.UI.QuickMenu
 
         public ReMenuToggle AddToggle(string text, string tooltip, Action<bool> onToggle, bool defaultValue = false, string color = "#ffffff") 
             => AddToggle(text, tooltip, onToggle, defaultValue, null, null, color);
+        public ReMenuToggle AddToggle(string text, string tooltip, Action<bool> onToggle, bool defaultValue = false) 
+            => AddToggle(text, tooltip, onToggle, defaultValue, null, null);
+        public ReMenuToggle AddToggle(string text, string tooltip, Action<bool> onToggle) 
+            => AddToggle(text, tooltip, onToggle, false, null, null);
         public ReMenuToggle AddToggle(string text, string tooltip, ConfigValue<bool> configValue, string color = "#ffffff")
             => AddToggle(text, tooltip, configValue, null, null, color);
+        public ReMenuToggle AddToggle(string text, string tooltip, ConfigValue<bool> configValue)
+            => AddToggle(text, tooltip, configValue, null, null);
         public ReMenuToggle AddToggle(string text, string tooltip, Action<bool> onToggle, bool defaultValue, Sprite iconOn, Sprite iconOff, string color = "#ffffff")
         {
             var toggle = new ReMenuToggle(text, tooltip, onToggle, _buttonContainer.RectTransform, defaultValue, iconOn, iconOff, color);
             return toggle;
         }
+        public ReMenuToggle AddToggle(string text, string tooltip, Action<bool> onToggle, bool defaultValue, Sprite iconOn, Sprite iconOff)
+        {
+            var toggle = new ReMenuToggle(text, tooltip, onToggle, _buttonContainer.RectTransform, defaultValue, iconOn, iconOff);
+            return toggle;
+        }
         public ReMenuToggle AddToggle(string text, string tooltip, ConfigValue<bool> configValue, Sprite iconOn, Sprite iconOff, string color = "#ffffff")
         {
             var toggle = new ReMenuToggle(text, tooltip, configValue.SetValue, _buttonContainer.RectTransform, configValue, iconOn, iconOff, color);
+            return toggle;
+        }
+        public ReMenuToggle AddToggle(string text, string tooltip, ConfigValue<bool> configValue, Sprite iconOn, Sprite iconOff)
+        {
+            var toggle = new ReMenuToggle(text, tooltip, configValue.SetValue, _buttonContainer.RectTransform, configValue, iconOn, iconOff);
             return toggle;
         }
 
