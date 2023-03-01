@@ -99,14 +99,29 @@ namespace ReMod.Core.VRChat
                         _getActionMenuInstance = ActionMenuController.prop_ActionMenuController_0;
                     }
                     
-                    ReModPatches.Patch();
+                    Patch();
                 }
                 
                 return _getActionMenuInstance;
             }
         }
         
-        
+        public static IEnumerator WaitForUInPatch()
+        {
+            Patch();
+            while (ReferenceEquals(VRCUiManager.field_Private_Static_VRCUiManager_0, null)) yield return null;
+            while (ReferenceEquals(MenuEx.userInterface, null)) yield return null;
+            while (ReferenceEquals(MenuEx.ActionMenuInstance, null)) yield return null;
+        }
+
+        public static void Patch()
+        {
+            if (wasPatched) return;
+            wasPatched = true;
+            ReModPatches.Patch();
+        }
+
+        private static bool wasPatched;
         
         private static VRC.UI.Elements.MainMenu _mainMenuInstance;
 

@@ -1,5 +1,4 @@
-﻿using ReMod.Core.UI.QuickMenu;
-using ReMod.Core.Unity;
+﻿using ReMod.Core.Unity;
 using ReMod.Core.VRChat;
 using System;
 using System.Linq;

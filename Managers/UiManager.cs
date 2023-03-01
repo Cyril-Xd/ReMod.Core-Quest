@@ -12,7 +12,7 @@ namespace ReMod.Core.Managers
         public IButtonPage LaunchPad { get; }
         public IButtonSystem BigMenu { get; }
 
-        public UiManager(string menuName, Sprite menuSprite, bool createQMTargets = true, bool createLaunchPadMenu = true, bool createMainMenu = true, bool crxcmodule = false, string color = "#ffffff")
+        public UiManager(string menuName, Sprite menuSprite, bool createQMTargets = true, bool createLaunchPadMenu = true, bool createMainMenu = false, bool crxcmodule = false, string color = "#ffffff")
         {
             // Quick Menu
             if (!crxcmodule)

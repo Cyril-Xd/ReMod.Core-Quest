@@ -15,6 +15,8 @@ namespace ReMod.Core.VRChat
             try
             {
                 var instance = HarmonyInstance.Create(Assembly.GetExecutingAssembly().FullName);
+                
+                // Action Menu Patch
                 var mainPage = typeof(ActionMenu).GetMethods().First(
                     m => m.ReturnType == typeof(void)
                          && m.GetParameters().Length == 0
