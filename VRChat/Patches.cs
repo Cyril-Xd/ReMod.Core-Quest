@@ -23,7 +23,7 @@ namespace ReMod.Core.VRChat
                          && m.Name.Contains("PDM")
                          && m.XRefScanForMethod(reflectedType: nameof(PedalOption))
                          && m.XRefScanForMethod(reflectedType: nameof(ActionButton))
-                         && m.Name.Contains("4")
+                         && m.Name.Contains("1")
                          && m.XRefCount() < 22
                 );
             

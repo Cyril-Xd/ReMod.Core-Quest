@@ -30,6 +30,7 @@ namespace ReMod.Core.UI.QuickMenu
 
             var name = RectTransform.GetChild(0).GetComponentInChildren<TextMeshProUGUI>();
             name.text = "<color=" + color + ">" + text + "</color>";
+            name.richText = true;
 
             var value = RectTransform.GetChild(1).GetComponentInChildren<TextMeshProUGUI>();
             value.text = defaultValue.ToString("F");  //This shit don't work

@@ -31,6 +31,7 @@ namespace ReMod.Core.UI.QuickMenu
 			TextMeshProUGUI componentInChildren = base.RectTransform.Find("Text_H1").GetComponentInChildren<TextMeshProUGUI>();
 			componentInChildren.text = "<color="+color+">"+text+"</color>";
 			componentInChildren.fontSize = fontsize;
+			componentInChildren.richText = true;
 		}
 		public ReMenuLabel(Transform transform, string text, string subtitleText, int fontsize = 46, string color = "#ffffff")  : base(ButtonPrefab, transform, "Label_" + subtitleText, true)
 		{
