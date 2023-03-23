@@ -14,9 +14,9 @@ namespace ReMod.Core.VRChat
         public static void Alert(string title, string content, Action leftBtnAction = null, Action rightBtnAction = null, string leftBtnText = "Yes", string rightBtnText = "No", bool showInMainMenu = false)
         {
             if (showInMainMenu)
-                MenuEx.MMInstance.Method_Public_Void_String_String_Action_Action_String_String_String_TextAlignmentOptions_0(title, content, leftBtnAction, rightBtnAction, leftBtnText, rightBtnText);
+                MenuEx.MMInstance.Method_Public_Void_String_String_String_String_Action_Action_String_TextAlignmentOptions_0(title, content, leftBtnText, rightBtnText, leftBtnAction, rightBtnAction);
             else
-                MenuEx.Instance.Method_Public_Void_String_String_Action_Action_String_String_String_TextAlignmentOptions_0(title, content, leftBtnAction, rightBtnAction, leftBtnText, rightBtnText);
+                MenuEx.Instance.Method_Public_Void_String_String_String_String_Action_Action_String_TextAlignmentOptions_0(title, content, leftBtnText, rightBtnText, leftBtnAction, rightBtnAction);
         }
 
         public static void MainMenuBigAlert(string title, string content)
