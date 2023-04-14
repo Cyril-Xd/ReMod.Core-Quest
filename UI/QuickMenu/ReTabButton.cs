@@ -32,8 +32,8 @@ namespace ReMod.Core.UI.QuickMenu
             button.onClick.AddListener(new Action(menuTab.ShowTabContent));
 
             var uiTooltip = GameObject.GetComponent<VRC.UI.Elements.Tooltips.UiTooltip>();
-            uiTooltip.field_Public_String_0 = tooltip;
-            uiTooltip.field_Public_String_1 = tooltip;
+            uiTooltip.text = tooltip;
+            uiTooltip.alternateText = tooltip;
 
             var iconImage = RectTransform.Find("Icon").GetComponent<Image>();
             iconImage.sprite = sprite;

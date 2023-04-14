@@ -12,12 +12,11 @@ namespace ReMod.Core.UI.MainMenu
 
         public string Tooltip
         {
-            get => _tooltip != null ? _tooltip.field_Public_String_0 : "";
+            get => _tooltip != null ? _tooltip.text : "";
             set
             {
                 if (_tooltip == null) return;
-                _tooltip.field_Public_String_0 = value;
-                _tooltip.field_Public_String_1 = value;
+                _tooltip.text = value;
             }
         }
         public ReMMUserButton(string name, string tooltip, Action onClick, Sprite icon)
@@ -40,8 +39,7 @@ namespace ReMod.Core.UI.MainMenu
 
             if (_tooltip != null)
             {
-                _tooltip.field_Public_String_0 = tooltip;
-                _tooltip.field_Public_String_1 = tooltip;
+                _tooltip.text = tooltip;
             }
             inst.transform.Find("Text_ButtonName/Icon").GetComponent<Image>().overrideSprite = icon;
             var btn = inst.GetComponent<UnityEngine.UI.Button>();
@@ -57,12 +55,11 @@ namespace ReMod.Core.UI.MainMenu
 
         public string Tooltip
         {
-            get => _tooltip != null ? _tooltip.field_Public_String_0 : "";
+            get => _tooltip != null ? _tooltip.text : "";
             set
             {
                 if (_tooltip == null) return;
-                _tooltip.field_Public_String_0 = value;
-                _tooltip.field_Public_String_1 = value;
+                _tooltip.text = value;
             }
         }
         public ReMMAvatarButton(string name, string tooltip, Action onClick, Sprite icon)
@@ -85,8 +82,8 @@ namespace ReMod.Core.UI.MainMenu
 
             if (_tooltip != null)
             {
-                _tooltip.field_Public_String_0 = tooltip;
-                _tooltip.field_Public_String_1 = tooltip;
+                _tooltip.text = tooltip;
+                _tooltip.alternateText = tooltip;
             }
             inst.transform.Find("Text_ButtonName/Icon").GetComponent<Image>().overrideSprite = icon;
             var btn = inst.GetComponent<UnityEngine.UI.Button>();

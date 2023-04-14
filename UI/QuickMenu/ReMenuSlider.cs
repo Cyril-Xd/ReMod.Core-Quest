@@ -15,12 +15,11 @@ namespace ReMod.Core.UI.QuickMenu
         private VRC.UI.Elements.Tooltips.UiTooltip _tooltip;
         
         public string Tooltip {
-            get => _tooltip != null ? _tooltip.field_Public_String_0 : "";
+            get => _tooltip != null ? _tooltip.text : "";
             set
             {
                 if (_tooltip == null) return;
-                _tooltip.field_Public_String_0 = value;
-                _tooltip.field_Public_String_1 = value;
+                _tooltip.text = value;
             }
         }
 
@@ -49,9 +48,9 @@ namespace ReMod.Core.UI.QuickMenu
             _sliderComponent.value = defaultValue;
 
             _tooltip = GameObject.GetComponent<VRC.UI.Elements.Tooltips.UiTooltip>();
-            _tooltip.field_Public_String_0 = tooltip;
-            _tooltip.field_Public_String_1 = tooltip;
-            
+            _tooltip.text = tooltip;
+            _tooltip.alternateText = tooltip;
+
             Slide(defaultValue,false);
             
             EnableDisableListener.RegisterSafe();

@@ -79,8 +79,8 @@ namespace ReMod.Core.UI.Wings
             _button.onClick.AddListener(new Action(onClick));
 
             var uiTooltip = GameObject.GetComponent<VRC.UI.Elements.Tooltips.UiTooltip>();
-            uiTooltip.field_Public_String_0 = tooltip;
-            uiTooltip.field_Public_String_1 = tooltip;
+            uiTooltip.text = tooltip;
+            uiTooltip.alternateText = tooltip;
 
             if (sprite == null && !arrow)
             {

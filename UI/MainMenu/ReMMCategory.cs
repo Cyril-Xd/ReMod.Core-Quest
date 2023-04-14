@@ -74,8 +74,8 @@ namespace ReMod.Core.UI.MainMenu
 
         public void SetTooltipText(string newToolTip)
         {
-            ButtonObj.GetComponent<VRC.UI.Elements.Tooltips.UiTooltip>().field_Public_String_0 = newToolTip;
-            ButtonObj.GetComponent<VRC.UI.Elements.Tooltips.UiTooltip>().field_Public_String_1 = newToolTip;
+            ButtonObj.GetComponent<VRC.UI.Elements.Tooltips.UiTooltip>().text = newToolTip;
+            ButtonObj.GetComponent<VRC.UI.Elements.Tooltips.UiTooltip>().alternateText = newToolTip;
         }
 
         public Transform GetContainer()

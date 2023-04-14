@@ -67,6 +67,7 @@ namespace ReMod.Core.VRChat
                     MelonCoroutines.Start(WaitForUI());
                     IEnumerator WaitForUI()
                     {
+                        // Compatibility support
                         while (ReferenceEquals(VRCUiManager.field_Private_Static_VRCUiManager_0, null)) yield return null;
                         foreach (var GameObjects in Resources.FindObjectsOfTypeAll<GameObject>())
                         {
@@ -99,6 +100,7 @@ namespace ReMod.Core.VRChat
                         _getActionMenuInstance = ActionMenuController.prop_ActionMenuController_0;
                     }
                     
+                    // Compatibility support
                     Patch();
                 }
                 
@@ -111,6 +113,8 @@ namespace ReMod.Core.VRChat
             Patch();
             while (ReferenceEquals(VRCUiManager.field_Private_Static_VRCUiManager_0, null)) yield return null;
             while (ReferenceEquals(MenuEx.userInterface, null)) yield return null;
+            while (ReferenceEquals(MenuEx.Instance, null)) yield return null;
+            while (ReferenceEquals(MenuEx.MMInstance, null)) yield return null;
             while (ReferenceEquals(MenuEx.ActionMenuInstance, null)) yield return null;
         }
 

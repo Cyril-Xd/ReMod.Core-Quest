@@ -27,6 +27,7 @@ namespace ReMod.Core.UI.Wings
                 if (_wingMenuPrefab == null)
                 {
                     _wingMenuPrefab = MenuEx.LeftWing.transform.Find("Container/InnerContainer/WingMenu").gameObject;
+                    if (_wingMenuPrefab == null) MelonLoader.MelonLogger.Msg("wing left prefab null");
                 }
                 return _wingMenuPrefab;
             }
@@ -43,7 +44,7 @@ namespace ReMod.Core.UI.Wings
             _menuName = GetCleanName(text);
             WingType = left;
             _wing = WingType ? MenuEx.LeftWing : MenuEx.RightWing;
-
+            
             var headerTransform = RectTransform.GetChild(0);
             var titleText = headerTransform.GetComponentInChildren<TextMeshProUGUI>();
             titleText.text = text;
@@ -56,7 +57,6 @@ namespace ReMod.Core.UI.Wings
             backIcon.gameObject.SetActive(true);
             var components = new Il2CppSystem.Collections.Generic.List<Behaviour>();
             backButton.GetComponents(components);
-
             foreach (var comp in components)
             {
                 comp.enabled = true;
@@ -73,11 +73,9 @@ namespace ReMod.Core.UI.Wings
 
                 Object.Destroy(control.gameObject);
             }
-
             Container = content;
 
             var menuStateCtrl = _wing.GetComponent<MenuStateController>();
-
             var uiPage = GameObject.GetComponent<UIPage>();
             uiPage.field_Public_String_0 = _menuName;
             uiPage.field_Protected_MenuStateController_0 = menuStateCtrl;
