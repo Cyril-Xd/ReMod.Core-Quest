@@ -27,7 +27,6 @@ namespace ReMod.Core.UI.Wings
                 if (_wingMenuPrefab == null)
                 {
                     _wingMenuPrefab = MenuEx.LeftWing.transform.Find("Container/InnerContainer/WingMenu").gameObject;
-                    if (_wingMenuPrefab == null) MelonLoader.MelonLogger.Msg("wing left prefab null");
                 }
                 return _wingMenuPrefab;
             }

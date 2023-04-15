@@ -133,6 +133,7 @@ namespace ReMod.Core.UI.QuickMenu
 
         public ReMenuPage(Transform transform) : base(transform)
         {
+            UiPage = GameObject.GetComponent<UIPage>();
             _isRoot = MenuEx.MenuStateCtrl.field_Public_ArrayOf_UIPage_0.Contains(UiPage);
             var scrollRect = RectTransform.Find("Scrollrect").GetComponent<ScrollRect>();
             _container = scrollRect.content;
