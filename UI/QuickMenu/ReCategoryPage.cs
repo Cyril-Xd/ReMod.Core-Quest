@@ -20,13 +20,13 @@ namespace ReMod.Core.UI.QuickMenu
             {
                 if (_menuPrefab == null)
                 {
-                    _menuPrefab = MenuEx.Instance.transform.Find("CanvasGroup/Container/Window/QMParent/Menu_Dashboard").gameObject;
+                    _menuPrefab = MenuEx.QMInstance.transform.Find("CanvasGroup/Container/Window/QMParent/Menu_Dashboard").gameObject;
                 }
                 return _menuPrefab;
             }
         }
 
-        private static int SiblingIndex => MenuEx.Instance.transform.Find("CanvasGroup/Container/Window/QMParent/Modal_AddMessage").GetSiblingIndex();
+        private static int SiblingIndex => MenuEx.QMInstance.transform.Find("CanvasGroup/Container/Window/QMParent/Modal_AddMessage").GetSiblingIndex();
 
         public event Action OnOpen;
         public event Action OnClose;
@@ -36,7 +36,7 @@ namespace ReMod.Core.UI.QuickMenu
 
         public UIPage UiPage { get; }
 
-        public ReCategoryPage(string text, bool isRoot = false, string color = "#ffffff") : base(MenuPrefab, MenuEx.MenuParent, $"Menu_{text}", false)
+        public ReCategoryPage(string text, bool isRoot = false, string color = "#ffffff") : base(MenuPrefab, MenuEx.QMenuParent, $"Menu_{text}", false)
         {
             if (!_fixedLaunchpad)
             {
@@ -84,7 +84,7 @@ namespace ReMod.Core.UI.QuickMenu
             // Set up UIPage
             UiPage = GameObject.AddComponent<UIPage>();
             UiPage.field_Public_String_0 = $"QuickMenuReMod{GetCleanName(text)}";
-            UiPage.field_Protected_MenuStateController_0 = MenuEx.MenuStateCtrl;
+            UiPage.field_Protected_MenuStateController_0 = MenuEx.QMenuStateCtrl;
             UiPage.field_Private_List_1_UIPage_0 = new Il2CppSystem.Collections.Generic.List<UIPage>();
             UiPage.field_Private_List_1_UIPage_0.Add(UiPage);
             UiPage.GetComponent<Canvas>().enabled = true; // Fix for Late Menu Creation
@@ -93,13 +93,13 @@ namespace ReMod.Core.UI.QuickMenu
             UiPage.GetComponent<GraphicRaycaster>().enabled = true; // Fix for Late Menu Creation
             UiPage.gameObject.active = false;
 
-            MenuEx.MenuStateCtrl.field_Private_Dictionary_2_String_UIPage_0.Add(UiPage.field_Public_String_0, UiPage);
+            MenuEx.QMenuStateCtrl.field_Private_Dictionary_2_String_UIPage_0.Add(UiPage.field_Public_String_0, UiPage);
 
             if (isRoot)
             {
-                var rootPages = MenuEx.MenuStateCtrl.field_Public_ArrayOf_UIPage_0.ToList();
+                var rootPages = MenuEx.QMenuStateCtrl.field_Public_ArrayOf_UIPage_0.ToList();
                 rootPages.Add(UiPage);
-                MenuEx.MenuStateCtrl.field_Public_ArrayOf_UIPage_0 = rootPages.ToArray();
+                MenuEx.QMenuStateCtrl.field_Public_ArrayOf_UIPage_0 = rootPages.ToArray();
             }
 
             var listener = GameObject.AddComponent<EnableDisableListener>();
@@ -110,13 +110,13 @@ namespace ReMod.Core.UI.QuickMenu
         public ReCategoryPage(Transform transform) : base(transform)
         {
             UiPage = GameObject.GetComponent<UIPage>();
-            _isRoot = MenuEx.MenuStateCtrl.field_Public_ArrayOf_UIPage_0.Contains(UiPage);
+            _isRoot = MenuEx.QMenuStateCtrl.field_Public_ArrayOf_UIPage_0.Contains(UiPage);
             _container = RectTransform.GetComponentInChildren<ScrollRect>().content;
         }
 
         public void Open()
         {
-            MenuEx.MenuStateCtrl.Method_Public_Void_String_ObjectPublicStBoAc1ObObUnique_Boolean_EnumNPublicSealedvaNoLeRiBoIn6vUnique_0(UiPage.field_Public_String_0);
+            MenuEx.QMenuStateCtrl.Method_Public_Void_String_ObjectPublicStBoAc1ObObUnique_Boolean_EnumNPublicSealedvaNoLeRiBoIn6vUnique_0(UiPage.field_Public_String_0);
 
             OnOpen?.Invoke();
         }
@@ -189,7 +189,7 @@ namespace ReMod.Core.UI.QuickMenu
         private static bool _fixedLaunchpad;
         private static void FixLaunchpadScrolling()
         {
-            var dashboard = MenuEx.Instance.transform.Find("CanvasGroup/Container/Window/QMParent/Menu_Dashboard").GetComponent<UIPage>();
+            var dashboard = MenuEx.QMInstance.transform.Find("CanvasGroup/Container/Window/QMParent/Menu_Dashboard").GetComponent<UIPage>();
             var scrollRect = dashboard.GetComponentInChildren<ScrollRect>();
 
             scrollRect.content.GetComponent<VerticalLayoutGroup>().childControlHeight = true;

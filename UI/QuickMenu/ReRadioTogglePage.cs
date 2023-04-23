@@ -22,13 +22,13 @@ namespace ReMod.Core.UI.QuickMenu
             {
                 if (_menuPrefab == null)
                 {
-                    _menuPrefab = MenuEx.Instance.transform.Find("CanvasGroup/Container/Window/QMParent/Menu_ChangeAudioInputDevice").gameObject;
+                    _menuPrefab = MenuEx.QMInstance.transform.Find("CanvasGroup/Container/Window/QMParent/Menu_ChangeAudioInputDevice").gameObject;
                 }
                 return _menuPrefab;
             }
         }
         
-        private static int SiblingIndex => MenuEx.Instance.transform.Find("CanvasGroup/Container/Window/QMParent/Modal_AddMessage").GetSiblingIndex();
+        private static int SiblingIndex => MenuEx.QMInstance.transform.Find("CanvasGroup/Container/Window/QMParent/Modal_AddMessage").GetSiblingIndex();
         
         public event Action OnOpen;
         public event Action OnClose;
@@ -51,7 +51,7 @@ namespace ReMod.Core.UI.QuickMenu
 
         public UIPage UiPage { get; }
 
-        public ReRadioTogglePage(string name) : base(MenuPrefab, MenuEx.MenuParent, $"Menu_{name}", false)
+        public ReRadioTogglePage(string name) : base(MenuPrefab, MenuEx.QMenuParent, $"Menu_{name}", false)
         {
             var headerTransform = RectTransform.GetChild(0);
             
@@ -74,11 +74,11 @@ namespace ReMod.Core.UI.QuickMenu
             // Set up UIPage
             UiPage = GameObject.GetComponent<UIPage>();
             UiPage.field_Public_String_0 = $"QuickMenuReMod{GetCleanName(name)}";
-            UiPage.field_Protected_MenuStateController_0 = MenuEx.MenuStateCtrl;
+            UiPage.field_Protected_MenuStateController_0 = MenuEx.QMenuStateCtrl;
             UiPage.field_Private_List_1_UIPage_0 = new Il2CppSystem.Collections.Generic.List<UIPage>();
             UiPage.field_Private_List_1_UIPage_0.Add(UiPage);
 
-            MenuEx.MenuStateCtrl.field_Private_Dictionary_2_String_UIPage_0.Add(UiPage.field_Public_String_0, UiPage);
+            MenuEx.QMenuStateCtrl.field_Private_Dictionary_2_String_UIPage_0.Add(UiPage.field_Public_String_0, UiPage);
 
             var listener = GameObject.AddComponent<EnableDisableListener>();
             listener.OnEnableEvent += () => OnOpen?.Invoke();
@@ -91,7 +91,7 @@ namespace ReMod.Core.UI.QuickMenu
         /// <param name="selected">Default object matching ones on toggle elements</param>
         public void Open(Object selected = null)
         {
-            MenuEx.MenuStateCtrl.Method_Public_Void_String_ObjectPublicStBoAc1ObObUnique_Boolean_EnumNPublicSealedvaNoLeRiBoIn6vUnique_0(UiPage.field_Public_String_0);
+            MenuEx.QMenuStateCtrl.Method_Public_Void_String_ObjectPublicStBoAc1ObObUnique_Boolean_EnumNPublicSealedvaNoLeRiBoIn6vUnique_0(UiPage.field_Public_String_0);
 
             if (_isUpdated)
             {

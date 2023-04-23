@@ -16,7 +16,7 @@ namespace ReMod.Core.VRChat
             if (showInMainMenu)
                 MenuEx.MMInstance.Method_Public_Void_String_String_Action_Action_String_String_String_TextAlignmentOptions_0(title, content, leftBtnAction, rightBtnAction, leftBtnText, rightBtnText);
             else
-                MenuEx.Instance.Method_Public_Void_String_String_Action_Action_String_String_String_TextAlignmentOptions_0(title, content, leftBtnAction, rightBtnAction, leftBtnText, rightBtnText);
+                MenuEx.QMInstance.Method_Public_Void_String_String_Action_Action_String_String_String_TextAlignmentOptions_0(title, content, leftBtnAction, rightBtnAction, leftBtnText, rightBtnText);
         }
         
         public static void Alert3Box(string title, string content, Action leftBtnAction = null, Action middleBtnAction = null, Action rightBtnAction = null, string leftBtnText = "Yes", string middleBtnText = "Maybe", string rightBtnText = "No", bool showInMainMenu = false)
@@ -24,7 +24,7 @@ namespace ReMod.Core.VRChat
             if (showInMainMenu)
                 MenuEx.MMInstance.Method_Public_Void_String_String_String_String_String_Action_Action_Action_String_TextAlignmentOptions_PDM_0(title, content, leftBtnText, middleBtnText, rightBtnText, leftBtnAction, middleBtnAction, rightBtnAction);
             else
-                MenuEx.Instance.Method_Public_Void_String_String_String_String_String_Action_Action_Action_String_TextAlignmentOptions_PDM_0(title, content, leftBtnText, middleBtnText, rightBtnText, leftBtnAction, middleBtnAction, rightBtnAction);
+                MenuEx.QMInstance.Method_Public_Void_String_String_String_String_String_Action_Action_Action_String_TextAlignmentOptions_PDM_0(title, content, leftBtnText, middleBtnText, rightBtnText, leftBtnAction, middleBtnAction, rightBtnAction);
         }
 
         public static void MainMenuBigAlert(string title, string content)
@@ -37,7 +37,7 @@ namespace ReMod.Core.VRChat
             if (showInMainMenu)
                 MenuEx.MMInstance.Method_Public_Virtual_Final_New_Void_String_0(content);
             else
-                MenuEx.Instance.Method_Public_Virtual_Final_New_Void_String_0(content);
+                MenuEx.QMInstance.Method_Public_Virtual_Final_New_Void_String_0(content);
         }
 
         public enum KeyBoardType

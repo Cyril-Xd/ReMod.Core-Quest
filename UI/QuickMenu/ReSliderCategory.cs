@@ -15,7 +15,7 @@ namespace ReMod.Core.UI.QuickMenu
             {
                 if (_ContainerPrefab == null)
                 {
-                    _ContainerPrefab = MenuEx.Instance.transform
+                    _ContainerPrefab = MenuEx.QMInstance.transform
                         .Find("CanvasGroup/Container/Window/QMParent/Menu_AudioSettings/Panel_QM_ScrollRect/Viewport/VerticalLayoutGroup").gameObject;
                 }
                 return _ContainerPrefab;

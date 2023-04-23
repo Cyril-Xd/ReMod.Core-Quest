@@ -22,7 +22,7 @@ namespace ReMod.Core.UI.QuickMenu
             {
                 if (_togglePrefab == null)
                 {
-                    var audioMenuSource = MenuEx.Instance.transform.Find("CanvasGroup/Container/Window/QMParent/Menu_ChangeAudioInputDevice").gameObject;
+                    var audioMenuSource = MenuEx.QMInstance.transform.Find("CanvasGroup/Container/Window/QMParent/Menu_ChangeAudioInputDevice").gameObject;
                     var deviceMenu = audioMenuSource.GetComponent<AudioInputDeviceMenu>();
                     _togglePrefab = deviceMenu.field_Public_GameObject_0;
                 }

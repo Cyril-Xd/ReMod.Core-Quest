@@ -42,7 +42,7 @@ namespace ReMod.Core.VRChat
 
         private static VRC.UI.Elements.QuickMenu _quickMenuInstance;
 
-        public static VRC.UI.Elements.QuickMenu Instance 
+        public static VRC.UI.Elements.QuickMenu QMInstance 
         {
             get
             {
@@ -113,7 +113,7 @@ namespace ReMod.Core.VRChat
             Patch();
             while (ReferenceEquals(VRCUiManager.field_Private_Static_VRCUiManager_0, null)) yield return null;
             while (ReferenceEquals(MenuEx.userInterface, null)) yield return null;
-            while (ReferenceEquals(MenuEx.Instance, null)) yield return null;
+            while (ReferenceEquals(MenuEx.QMInstance, null)) yield return null;
             while (ReferenceEquals(MenuEx.MMInstance, null)) yield return null;
             while (ReferenceEquals(MenuEx.ActionMenuInstance, null)) yield return null;
         }
@@ -156,29 +156,29 @@ namespace ReMod.Core.VRChat
 
         private static Transform _menuParent;
 
-        public static Transform MenuParent
+        public static Transform QMenuParent
         {
             get
             {
                 if (_menuParent == null)
                 {
-                    _menuParent = Instance.transform.Find("CanvasGroup/Container/Window/QMParent");
+                    _menuParent = QMInstance.transform.Find("CanvasGroup/Container/Window/QMParent");
                 }
                 return _menuParent;
             }
         }
 
-        private static Transform _menuTabs;
+        private static Transform _qmenuTabs;
 
-        public static Transform MenuTabs
+        public static Transform QMenuTabs
         {
             get
             {
-                if (_menuTabs == null)
+                if (_qmenuTabs == null)
                 {
-                    _menuTabs = Instance.transform.Find("CanvasGroup/Container/Window/Page_Buttons_QM/HorizontalLayoutGroup");
+                    _qmenuTabs = QMInstance.transform.Find("CanvasGroup/Container/Window/Page_Buttons_QM/HorizontalLayoutGroup");
                 }
-                return _menuTabs;
+                return _qmenuTabs;
             }
         }
         private static Transform _MmenuTabs;
@@ -196,13 +196,13 @@ namespace ReMod.Core.VRChat
         }
         private static MenuStateController _menuStateCtrl;
 
-        public static MenuStateController MenuStateCtrl
+        public static MenuStateController QMenuStateCtrl
         {
             get
             {
                 if (_menuStateCtrl == null)
                 {
-                    _menuStateCtrl = Instance.transform.GetComponent<MenuStateController>();
+                    _menuStateCtrl = QMInstance.transform.GetComponent<MenuStateController>();
                 }
 
                 return _menuStateCtrl;
@@ -231,7 +231,7 @@ namespace ReMod.Core.VRChat
             {
                 if (_selectedUserLocal == null)
                 {
-                    _selectedUserLocal = Instance.transform.Find("CanvasGroup/Container/Window/QMParent/Menu_SelectedUser_Local").GetComponent<SelectedUserMenuQM>();
+                    _selectedUserLocal = QMInstance.transform.Find("CanvasGroup/Container/Window/QMParent/Menu_SelectedUser_Local").GetComponent<SelectedUserMenuQM>();
                 }
 
                 return _selectedUserLocal;
@@ -245,7 +245,7 @@ namespace ReMod.Core.VRChat
             {
                 if (_dashboardMenu == null)
                 {
-                    _dashboardMenu = MenuParent.Find("Menu_Dashboard");
+                    _dashboardMenu = QMenuParent.Find("Menu_Dashboard");
                 }
                 return _dashboardMenu;
             }
@@ -269,7 +269,7 @@ namespace ReMod.Core.VRChat
             {
                 if (_CRXCMenu == null)
                 {
-                    _CRXCMenu = MenuParent.Find("Menu_CRXCMenu");
+                    _CRXCMenu = QMenuParent.Find("Menu_CRXCMenu");
                 }
                 return _CRXCMenu;
             }
@@ -281,7 +281,7 @@ namespace ReMod.Core.VRChat
             {
                 if (_notificationMenu == null)
                 {
-                    _notificationMenu = MenuParent.Find("Menu_Notifications");
+                    _notificationMenu = QMenuParent.Find("Menu_Notifications");
                 }
                 return _notificationMenu;
             }
@@ -293,7 +293,7 @@ namespace ReMod.Core.VRChat
             {
                 if (_hereMenu == null)
                 {
-                    _hereMenu = MenuParent.Find("Menu_Here");
+                    _hereMenu = QMenuParent.Find("Menu_Here");
                 }
                 return _hereMenu;
             }
@@ -305,7 +305,7 @@ namespace ReMod.Core.VRChat
             {
                 if (_cameraMenu == null)
                 {
-                    _cameraMenu = MenuParent.Find("Menu_Camera");
+                    _cameraMenu = QMenuParent.Find("Menu_Camera");
                 }
                 return _cameraMenu;
             }
@@ -317,7 +317,7 @@ namespace ReMod.Core.VRChat
             {
                 if (_audiosettingsMenu == null)
                 {
-                    _audiosettingsMenu = MenuParent.Find("Menu_AudioSettings");
+                    _audiosettingsMenu = QMenuParent.Find("Menu_AudioSettings");
                 }
                 return _audiosettingsMenu;
             }
@@ -329,7 +329,7 @@ namespace ReMod.Core.VRChat
             {
                 if (_settingsMenu == null)
                 {
-                    _settingsMenu = MenuParent.Find("Menu_Settings");
+                    _settingsMenu = QMenuParent.Find("Menu_Settings");
                 }
                 return _settingsMenu;
             }
@@ -341,7 +341,7 @@ namespace ReMod.Core.VRChat
             {
                 if (_devtoolsMenu == null)
                 {
-                    _devtoolsMenu = MenuParent.Find("Menu_DevTools");
+                    _devtoolsMenu = QMenuParent.Find("Menu_DevTools");
                 }
                 return _devtoolsMenu;
             }
@@ -356,7 +356,7 @@ namespace ReMod.Core.VRChat
             {
                 if (_leftWing == null)
                 {
-                    _leftWing = Instance.transform.Find("CanvasGroup/Container/Window/Wing_Left").gameObject;
+                    _leftWing = QMInstance.transform.Find("CanvasGroup/Container/Window/Wing_Left").gameObject;
                 }
                 return _leftWing;
             }
@@ -368,7 +368,7 @@ namespace ReMod.Core.VRChat
             {
                 if (_rightWing == null)
                 {
-                    _rightWing = Instance.transform.Find("CanvasGroup/Container/Window/Wing_Right").gameObject;
+                    _rightWing = QMInstance.transform.Find("CanvasGroup/Container/Window/Wing_Right").gameObject;
                 }
                 return _rightWing;
             }
@@ -384,7 +384,7 @@ namespace ReMod.Core.VRChat
             {
                 if (_onIconSprite == null)
                 {
-                    _onIconSprite = Instance.transform
+                    _onIconSprite = QMInstance.transform
                         .Find("CanvasGroup/Container/Window/QMParent/Menu_Notifications/Panel_NoNotifications_Message/Icon").GetComponent<Image>().sprite;
                 }
                 return _onIconSprite;
@@ -411,7 +411,7 @@ namespace ReMod.Core.VRChat
             {
                 if (_togglePrefab == null)
                 {
-                    _togglePrefab = Instance.transform
+                    _togglePrefab = QMInstance.transform
                         .Find("CanvasGroup/Container/Window/QMParent/Menu_Settings/Panel_QM_ScrollRect").GetComponent<ScrollRect>().content
                         .Find("Buttons_UI_Elements_Row_1/Button_ToggleQMInfo").gameObject;
                 }
@@ -426,7 +426,7 @@ namespace ReMod.Core.VRChat
             {
                 if (_sliderPrefab == null)
                 {
-                    _sliderPrefab = Instance.transform.Find("CanvasGroup/Container/Window/QMParent/Menu_AudioSettings/Panel_QM_ScrollRect/Viewport/VerticalLayoutGroup/Audio/Audio/VolumeSlider_Master").gameObject;
+                    _sliderPrefab = QMInstance.transform.Find("CanvasGroup/Container/Window/QMParent/Menu_AudioSettings/Panel_QM_ScrollRect/Viewport/VerticalLayoutGroup/Audio/Audio/VolumeSlider_Master").gameObject;
                 }
                 return _sliderPrefab;
             }

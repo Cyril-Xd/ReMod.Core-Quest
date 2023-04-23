@@ -15,7 +15,7 @@ namespace ReMod.Core.UI.QuickMenu
             {
                 if (_tabButtonPrefab == null)
                 {
-                    _tabButtonPrefab = MenuEx.Instance.transform.Find("CanvasGroup/Container/Window/Page_Buttons_QM/HorizontalLayoutGroup/Page_Settings").gameObject;
+                    _tabButtonPrefab = MenuEx.QMInstance.transform.Find("CanvasGroup/Container/Window/Page_Buttons_QM/HorizontalLayoutGroup/Page_Settings").gameObject;
                 }
                 return _tabButtonPrefab;
             }
@@ -25,7 +25,7 @@ namespace ReMod.Core.UI.QuickMenu
         {
             var menuTab = RectTransform.GetComponent<MenuTab>();
             menuTab.field_Public_String_0 = GetCleanName($"QuickMenuReMod{pageName}");
-            menuTab.field_Private_MenuStateController_0 = MenuEx.MenuStateCtrl;
+            menuTab.field_Private_MenuStateController_0 = MenuEx.QMenuStateCtrl;
 
             var button = GameObject.GetComponent<Button>();
             button.onClick = new Button.ButtonClickedEvent();

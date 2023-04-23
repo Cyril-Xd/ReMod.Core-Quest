@@ -18,7 +18,7 @@ namespace ReMod.Core.UI.QuickMenu
             {
                 if (_buttonPrefab == null)
                 {
-                    _buttonPrefab = MenuEx.Instance.transform
+                    _buttonPrefab = MenuEx.QMInstance.transform
                         .Find("CanvasGroup/Container/Window/QMParent/Menu_Dashboard/ScrollRect").GetComponent<ScrollRect>().content
                         .Find("Buttons_QuickActions/Button_Respawn").gameObject;
                 }

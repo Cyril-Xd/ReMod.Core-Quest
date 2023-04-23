@@ -34,7 +34,7 @@ namespace ReMod.Core.UI.MainMenu
 
 
         private readonly Transform _container;
-        public ReMMenuPage(string text, Sprite icon, bool isRoot = false, string color = "#ffffff") : base(MMMenuPagePrefab, MenuEx.MenuParent, $"Menu_{text}", false)
+        public ReMMenuPage(string text, Sprite icon, bool isRoot = false, string color = "#ffffff") : base(MMMenuPagePrefab, MenuEx.QMenuParent, $"Menu_{text}", false)
         {
             MenuObject = UnityEngine.Object.Instantiate(MMMenuPagePrefab, MMMenuPagePrefab.transform.parent);
             UnityEngine.Object.DestroyImmediate(MenuObject.GetComponent<SettingsPage>());
@@ -99,7 +99,7 @@ namespace ReMod.Core.UI.MainMenu
         public ReMMenuPage(Transform transform) : base(transform)
         {
             UiPage = GameObject.GetComponent<UIPage>();
-            _isRoot = MenuEx.MenuStateCtrl.field_Public_ArrayOf_UIPage_0.Contains(UiPage);
+            _isRoot = MenuEx.QMenuStateCtrl.field_Public_ArrayOf_UIPage_0.Contains(UiPage);
             var scrollRect = RectTransform.Find("Scrollrect").GetComponent<ScrollRect>();
             _container = scrollRect.content;
         }
@@ -107,7 +107,7 @@ namespace ReMod.Core.UI.MainMenu
         public void Open()
         {
             UiPage.gameObject.active = true;
-            MenuEx.MenuStateCtrl.Method_Public_Void_String_ObjectPublicStBoAc1ObObUnique_Boolean_EnumNPublicSealedvaNoLeRiBoIn6vUnique_0(UiPage.field_Public_String_0);
+            MenuEx.QMenuStateCtrl.Method_Public_Void_String_ObjectPublicStBoAc1ObObUnique_Boolean_EnumNPublicSealedvaNoLeRiBoIn6vUnique_0(UiPage.field_Public_String_0);
 
             OnOpen?.Invoke();
         }
