@@ -34,10 +34,8 @@ private void startWaitForUI()
         
         private IEnumerator WaitForUI()
         {
-            while (ReferenceEquals(VRCUiManager.field_Private_Static_VRCUiManager_0, null)) yield return null;
-            while (ReferenceEquals(QuickMenuEx.userInterface, null)) yield return null;
-            while (ReferenceEquals(QuickMenuEx.ActionMenuInstance, null)) yield return null;
-            UserInterface = QuickMenuEx.userInterface;
+            yield return MenuEx.WaitForUInPatch();
+            UserInterface = MenuEx.userInterface;
             OnMenuStart();
         }       
 ```
