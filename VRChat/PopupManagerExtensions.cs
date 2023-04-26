@@ -40,6 +40,11 @@ namespace ReMod.Core.VRChat
                 MenuEx.QMInstance.Method_Public_Virtual_Final_New_Void_String_0(content);
         }
 
+        public static void Toast(string content, Sprite icon = null, float duration = 5f)
+        {
+            VRCUiManager.field_Private_Static_VRCUiManager_0.field_Private_HudController_0.Method_Public_Void_String_Sprite_Single_0(content, icon, duration);
+        }
+
         public enum KeyBoardType
         {
             Standard = EnumPublicSealedvaStNuSe4vUnique.Standard,

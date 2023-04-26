@@ -228,7 +228,7 @@ namespace ReMod.Core.UI.QuickMenu
                 return existingPage;
             }
 
-            var menu = new ReMenuPage(text);
+            var menu = new ReMenuPage(text, color: color);
             AddButton(text, string.IsNullOrEmpty(tooltip) ? $"Open the {text} menu" : tooltip, menu.Open, sprite, color);
             return menu;
         }

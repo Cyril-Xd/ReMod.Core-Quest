@@ -84,6 +84,11 @@ namespace ReMod.Core.UI.MainMenu
             {
                 _tooltip.text = tooltip;
                 _tooltip.alternateText = tooltip;
+                _tooltip.Method_Public_UiTooltip_String_0(tooltip);
+                _tooltip.Method_Public_UiTooltip_String_1(tooltip);
+                _tooltip.Method_Public_UiTooltip_String_2(tooltip);
+                _tooltip.Method_Public_UiTooltip_String_3(tooltip);
+                _tooltip.Method_Public_UiTooltip_String_4(tooltip);
             }
             inst.transform.Find("Text_ButtonName/Icon").GetComponent<Image>().overrideSprite = icon;
             var btn = inst.GetComponent<UnityEngine.UI.Button>();

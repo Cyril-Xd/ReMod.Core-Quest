@@ -81,6 +81,11 @@ namespace ReMod.Core.UI.Wings
             var uiTooltip = GameObject.GetComponent<VRC.UI.Elements.Tooltips.UiTooltip>();
             uiTooltip.text = tooltip;
             uiTooltip.alternateText = tooltip;
+            uiTooltip.Method_Public_UiTooltip_String_0(tooltip);
+            uiTooltip.Method_Public_UiTooltip_String_1(tooltip);
+            uiTooltip.Method_Public_UiTooltip_String_2(tooltip);
+            uiTooltip.Method_Public_UiTooltip_String_3(tooltip);
+            uiTooltip.Method_Public_UiTooltip_String_4(tooltip);
 
             if (sprite == null && !arrow)
             {

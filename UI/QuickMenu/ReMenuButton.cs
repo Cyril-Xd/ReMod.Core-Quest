@@ -124,6 +124,11 @@ namespace ReMod.Core.UI.QuickMenu
             {
                 _tooltip.text = tooltip;
                 _tooltip.alternateText = tooltip;
+                _tooltip.Method_Public_UiTooltip_String_0(tooltip);
+                _tooltip.Method_Public_UiTooltip_String_1(tooltip);
+                _tooltip.Method_Public_UiTooltip_String_2(tooltip);
+                _tooltip.Method_Public_UiTooltip_String_3(tooltip);
+                _tooltip.Method_Public_UiTooltip_String_4(tooltip);
             }
 
             if (onClick != null)
@@ -132,8 +137,6 @@ namespace ReMod.Core.UI.QuickMenu
                 _button.onClick = new Button.ButtonClickedEvent();
                 _button.onClick.AddListener(new Action(onClick));
             }
-
-           
         }
 
         public ReMenuButton(Transform transform) : base(transform)
