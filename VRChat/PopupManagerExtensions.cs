@@ -44,6 +44,11 @@ namespace ReMod.Core.VRChat
         {
             VRCUiManager.field_Private_Static_VRCUiManager_0.field_Private_HudController_0.Method_Public_Void_String_Sprite_Single_0(content, icon, duration);
         }
+        
+        public static void Toast(string content, string description = null, Sprite icon = null, float duration = 5f)
+        {
+            VRCUiManager.field_Private_Static_VRCUiManager_0.field_Private_HudController_0.notification.Method_Public_Void_Sprite_String_String_Single_Object1PublicTYBoTYUnique_1_Boolean_0(icon, content, description, duration);
+        }
 
         public enum KeyBoardType
         {

@@ -86,6 +86,7 @@ namespace ReMod.Core.UI.Wings
             uiTooltip.Method_Public_UiTooltip_String_2(tooltip);
             uiTooltip.Method_Public_UiTooltip_String_3(tooltip);
             uiTooltip.Method_Public_UiTooltip_String_4(tooltip);
+            uiTooltip.Method_Public_UiTooltip_String_PDM_2(tooltip);
 
             if (sprite == null && !arrow)
             {

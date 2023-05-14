@@ -58,7 +58,8 @@ namespace ReMod.Core.UI.QuickMenu
             _isRoot = isRoot;
             var headerTransform = RectTransform.GetChild(0);
             Object.DestroyImmediate(headerTransform.Find("RightItemContainer/Button_QM_Expand").gameObject);
-
+            Object.DestroyImmediate(headerTransform.Find("RightItemContainer/Button_GM_EnterGuidedMode").gameObject);
+            
             var titleText = headerTransform.GetComponentInChildren<TextMeshProUGUI>();
             titleText.text = "<color=" + color + ">" + text + "</color>";
             titleText.richText = true;

@@ -81,7 +81,9 @@ namespace ReMod.Core.UI.QuickMenu
             _tooltip.Method_Public_UiTooltip_String_2(tooltip);
             _tooltip.Method_Public_UiTooltip_String_3(tooltip);
             _tooltip.Method_Public_UiTooltip_String_4(tooltip);
-            
+            _tooltip.Method_Public_UiTooltip_String_PDM_2(tooltip);
+            _tooltip.Method_Public_UiTooltip_String_PDM_0(tooltip);
+
             Toggle(defaultValue,false);
         }
 

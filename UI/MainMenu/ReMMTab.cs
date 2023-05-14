@@ -39,6 +39,7 @@ namespace ReMod.Core.UI.MainMenu
             uiTooltip.Method_Public_UiTooltip_String_2(tooltip);
             uiTooltip.Method_Public_UiTooltip_String_3(tooltip);
             uiTooltip.Method_Public_UiTooltip_String_4(tooltip);
+            uiTooltip.Method_Public_UiTooltip_String_PDM_2(tooltip);
 
             var iconImage = RectTransform.Find("Icon").GetComponent<Image>();
             iconImage.sprite = sprite;

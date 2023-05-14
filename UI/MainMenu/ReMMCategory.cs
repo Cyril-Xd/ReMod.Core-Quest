@@ -82,6 +82,7 @@ namespace ReMod.Core.UI.MainMenu
             uiTooltip.Method_Public_UiTooltip_String_2(newToolTip);
             uiTooltip.Method_Public_UiTooltip_String_3(newToolTip);
             uiTooltip.Method_Public_UiTooltip_String_4(newToolTip);
+            uiTooltip.Method_Public_UiTooltip_String_PDM_2(newToolTip);
         }
 
         public Transform GetContainer()
