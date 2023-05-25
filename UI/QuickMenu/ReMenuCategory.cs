@@ -75,7 +75,7 @@ namespace ReMod.Core.UI.QuickMenu
             TextComponent.richText = true;
 
             var foldout = GameObject.GetComponent<FoldoutToggle>();
-            foldout.Method_Public_Void_String_0($"UI.ReMod.{GetCleanName(title)}");
+            foldout.Method_Public_Void_String_Boolean_0($"UI.ReMod.{GetCleanName(title)}");
             foldout.Method_Public_Void_UnityAction_1_Boolean_0(new Action<bool>(b => OnToggle?.Invoke(b)));
         }
 
