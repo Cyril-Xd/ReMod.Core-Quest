@@ -1,5 +1,8 @@
-# Quest version
-THis is a port of the ReMod.Core project, originally ported as a button API by XOX-Toxic, with a restoration of its function as the ReMod.Core by Neeko, and includes extended functionality by me, Cyril
+# ReMod.Core Quest Version
+This is a port of the ReMod.Core project, originally ported as a ButtonAPI by XOX-Toxic with a restoration of it's function as the ReMod.Core by uwuclara and includes extended functionality by me, Cyril.
+
+### ReMod.Core-Updater
+You can use ReMod.Core-Updater plugin to automatically update ReMod.Core Quest Library that can be found [here](https://github.com/uwuclara/ReMod.Core-Updater).
 
 # ReMod.Core
 
@@ -24,28 +27,46 @@ Read the code in [ReModCE](https://github.com/RequiDev/ReModCE). Requi wrote thi
 ## Contribution
 In case you do have something to contribute, please create a pull request. Try to stay close to the current coding style.
 
-## WaitForUI
+## How To Use
 ```
-private void startWaitForUI()
-        {
-            ClassInjector.RegisterTypeInIl2Cpp<EnableDisableListener>();
-            MelonCoroutines.Start(WaitForUI());
-        }
-        
-        private IEnumerator WaitForUI()
-        {
-            yield return MenuEx.WaitForUInPatch();
-            UserInterface = MenuEx.userInterface;
-            OnMenuStart();
-        }       
+using System;
+using System.Collections;
+using MelonLoader;
+using UnityEngine;
+using ReMod.Core.Managers;
+using ReMod.Core.Unity;
+using ReMod.Core.VRChat;
+
+internal static GameObject UserInterface;
+internal static UiManager _uiManager;
+
+public override void OnApplicationStart()
+{
+    MenuEx.Patch();
+    
+    ClassInjector.RegisterTypeInIl2Cpp<EnableDisableListener>();
+    MelonCoroutines.Start(WaitForUI());
+    
+    IEnumerator WaitForUI()
+    {
+        yield return MenuEx.WaitForUInPatch();
+        UserInterface = MenuEx.userInterface;
+        OnMenuStart();
+    }
+}     
+
+internal static OnMenuStart()
+{
+    _uiManager = new UiManager(menuName: "NameOfTheMenu", menuSprite: null);
+}
 ```
 ## Credits
 [@Kiokuu](https://github.com/Kiokuu)  
 [@imxLucid](https://github.com/imxLucid)  
 [@DDAkebono](https://github.com/DDAkebono)  
-[@MintLily](https://github.com/MintLily)
-[@Kiokuu](https://github.com/Kiokuu) 
-[@WTFBlaze](https://github.com/WTFBlaze) 
-XOX-Toxic
-Cyril-XD
-Neeko
+[@MintLily](https://github.com/MintLily)  
+[@Kiokuu](https://github.com/Kiokuu)   
+[@WTFBlaze](https://github.com/WTFBlaze)  
+[@XOX-Toxic](https://github.com/WTFBlaze)  
+[@Cyril-XD](https://github.com/Cyril-Xd)  
+[@uwuclara](https://github.com/uwuclara)   
