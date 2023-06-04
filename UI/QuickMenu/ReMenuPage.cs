@@ -143,8 +143,6 @@ namespace ReMod.Core.UI.QuickMenu
         {
             UiPage.gameObject.active = true;
             MenuEx.QMenuStateCtrl.Method_Public_Void_String_ObjectPublicStBoAc1ObObUnique_Boolean_EnumNPublicSealedvaNoLeRiBoIn6vUnique_0(UiPage.field_Public_String_0);
-
-            OnOpen?.Invoke();
         }
         public ReMenuLabel AddLabel(string text, string Subtitle, int FontSize = 46, string color = "#ffffff")
         {
