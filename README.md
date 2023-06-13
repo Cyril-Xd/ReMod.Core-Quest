@@ -33,6 +33,7 @@ using System;
 using System.Collections;
 using MelonLoader;
 using UnityEngine;
+using UnhollowerRuntimeLib;
 using ReMod.Core.Managers;
 using ReMod.Core.Unity;
 using ReMod.Core.VRChat;
