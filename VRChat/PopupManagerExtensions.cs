@@ -11,22 +11,38 @@ namespace ReMod.Core.VRChat
         private static VRCInputField _KeyboardComponent;
         private static GameObject keyboardGameObject;
         
+        [Obsolete("Alert is deprecated, please use Alert2Box instead. This will be removed in future updates. -Neeko")]
         public static void Alert(string title, string content, Action leftBtnAction = null, Action rightBtnAction = null, string leftBtnText = "Yes", string rightBtnText = "No", bool showInMainMenu = false)
         {
-            if (showInMainMenu)
-                MenuEx.MMInstance.Method_Public_Void_String_String_Action_Action_String_String_String_TextAlignmentOptions_0(title, content, leftBtnAction, rightBtnAction, leftBtnText, rightBtnText);
+            if (showInMainMenu) 
+                MenuEx.MMInstance.Method_Public_Virtual_Final_New_Void_String_String_Action_Action_String_String_String_TextAlignmentOptions_0(title, content, leftBtnAction, rightBtnAction, leftBtnText, rightBtnText);
             else
-                MenuEx.QMInstance.Method_Public_Void_String_String_Action_Action_String_String_String_TextAlignmentOptions_0(title, content, leftBtnAction, rightBtnAction, leftBtnText, rightBtnText);
+                MenuEx.QMInstance.Method_Public_Virtual_Final_New_Void_String_String_String_String_Action_Action_String_TextAlignmentOptions_0(title, content, leftBtnText, rightBtnText, leftBtnAction, rightBtnAction);
         }
         
+        public static void Alert1Box(string title, string content, Action middleBtnAction = null, string middleBtnText = "Okay", bool showInMainMenu = false)
+        {
+            if (showInMainMenu)
+                MenuEx.MMInstance.Method_Public_Void_String_String_String_String_String_Action_Action_Action_String_TextAlignmentOptions_PDM_0(title, content, middleBtnText, null, null, middleBtnAction);
+            else
+                MenuEx.QMInstance.Method_Public_Void_String_String_String_String_String_Action_Action_Action_String_TextAlignmentOptions_PDM_1(title, content, middleBtnText, null, null, middleBtnAction);
+        }
+        
+        public static void Alert2Box(string title, string content, Action leftBtnAction = null, Action rightBtnAction = null, string leftBtnText = "Yes", string rightBtnText = "No", bool showInMainMenu = false)
+        {
+            if (showInMainMenu)
+                MenuEx.MMInstance.Method_Public_Void_String_String_String_String_String_Action_Action_Action_String_TextAlignmentOptions_PDM_0(title, content, leftBtnText, rightBtnText, null, leftBtnAction, rightBtnAction);
+            else
+                MenuEx.QMInstance.Method_Public_Void_String_String_String_String_String_Action_Action_Action_String_TextAlignmentOptions_PDM_1(title, content, leftBtnText, rightBtnText, null, leftBtnAction, rightBtnAction);
+        }
         public static void Alert3Box(string title, string content, Action leftBtnAction = null, Action middleBtnAction = null, Action rightBtnAction = null, string leftBtnText = "Yes", string middleBtnText = "Maybe", string rightBtnText = "No", bool showInMainMenu = false)
         {
             if (showInMainMenu)
                 MenuEx.MMInstance.Method_Public_Void_String_String_String_String_String_Action_Action_Action_String_TextAlignmentOptions_PDM_0(title, content, leftBtnText, middleBtnText, rightBtnText, leftBtnAction, middleBtnAction, rightBtnAction);
             else
-                MenuEx.QMInstance.Method_Public_Void_String_String_String_String_String_Action_Action_Action_String_TextAlignmentOptions_PDM_0(title, content, leftBtnText, middleBtnText, rightBtnText, leftBtnAction, middleBtnAction, rightBtnAction);
+                MenuEx.QMInstance.Method_Public_Void_String_String_String_String_String_Action_Action_Action_String_TextAlignmentOptions_PDM_1(title, content, leftBtnText, middleBtnText, rightBtnText, leftBtnAction, middleBtnAction, rightBtnAction);
         }
-
+        
         public static void MainMenuBigAlert(string title, string content)
         {
             MenuEx.MMInstance.Method_Public_Void_String_String_PDM_0(title, content);
@@ -35,11 +51,11 @@ namespace ReMod.Core.VRChat
         public static void InfoBox(string content, bool showInMainMenu = false)
         {
             if (showInMainMenu)
-                MenuEx.MMInstance.Method_Public_Virtual_Final_New_Void_String_0(content);
+                MenuEx.MMInstance.Method_Public_Virtual_Final_New_Void_String_2(content);
             else
-                MenuEx.QMInstance.Method_Public_Virtual_Final_New_Void_String_0(content);
+                MenuEx.QMInstance.Method_Public_Virtual_Final_New_Void_String_2(content);
         }
-
+        
         public static void Toast(string content, Sprite icon = null, float duration = 5f)
         {
             VRCUiManager.field_Private_Static_VRCUiManager_0.field_Private_HudController_0.Method_Public_Void_String_Sprite_Single_0(content, icon, duration);

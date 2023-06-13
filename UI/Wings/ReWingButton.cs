@@ -79,15 +79,17 @@ namespace ReMod.Core.UI.Wings
             _button.onClick.AddListener(new Action(onClick));
 
             var uiTooltip = GameObject.GetComponent<VRC.UI.Elements.Tooltips.UiTooltip>();
+            
             uiTooltip.text = tooltip;
             uiTooltip.alternateText = tooltip;
-            uiTooltip.Method_Public_UiTooltip_String_0(tooltip);
-            uiTooltip.Method_Public_UiTooltip_String_1(tooltip);
+            
+            //uiTooltip.Method_Public_UiTooltip_String_0(tooltip);
+            //uiTooltip.Method_Public_UiTooltip_String_1(tooltip);
             uiTooltip.Method_Public_UiTooltip_String_2(tooltip);
             uiTooltip.Method_Public_UiTooltip_String_3(tooltip);
-            uiTooltip.Method_Public_UiTooltip_String_4(tooltip);
-            uiTooltip.Method_Public_UiTooltip_String_PDM_2(tooltip);
-
+            //uiTooltip.Method_Public_UiTooltip_String_4(tooltip);
+            //uiTooltip.Method_Public_UiTooltip_String_PDM_2(tooltip);
+            
             if (sprite == null && !arrow)
             {
                 container.gameObject.AddComponent<HorizontalLayoutGroup>();
