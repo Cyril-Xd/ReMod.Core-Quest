@@ -76,16 +76,8 @@ namespace ReMod.Core.UI.QuickMenu
             _tooltip = GameObject.GetComponent<VRC.UI.Elements.Tooltips.UiToggleTooltip>();
             _tooltip.text = tooltip;
             _tooltip.alternateText = tooltip;
-            _tooltip.Method_Public_UiTooltip_String_0(tooltip);
-            _tooltip.Method_Public_UiTooltip_String_1(tooltip);
-            _tooltip.Method_Public_UiTooltip_String_2(tooltip);
-            _tooltip.Method_Public_UiTooltip_String_3(tooltip);
-            _tooltip.Method_Public_UiTooltip_String_4(tooltip);
-            _tooltip.Method_Public_UiTooltip_String_PDM_0(tooltip);
-            _tooltip.Method_Public_UiTooltip_String_PDM_2(tooltip);
             _tooltip.Method_Public_UiTooltip_String_PDM_4(tooltip);
-            _tooltip.Method_Public_UiTooltip_String_PDM_5(tooltip);
-            _tooltip.Method_Public_UiTooltip_String_PDM_6(tooltip);
+            _tooltip.Method_Public_UiTooltip_String_1(tooltip);
 
             Toggle(defaultValue,false);
         }
