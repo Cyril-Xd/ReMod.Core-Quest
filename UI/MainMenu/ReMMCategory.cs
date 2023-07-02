@@ -7,8 +7,7 @@ using UnityEngine;
 using VRC.UI.Elements.Controls;
 using Object = UnityEngine.Object;
 
-namespace AGeneralQuestMod.ReMod_Extensions.MainMenu;
-
+namespace ReMod.Core.UI.MainMenu;
 
 public class ReMMCategory : UiElement
 {
