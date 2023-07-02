@@ -5,7 +5,7 @@ using VRC.UI.Core.Styles;
 using VRC.UI.Elements.Tooltips;
 using Object = UnityEngine.Object;
 
-namespace AGeneralQuestMod.ReMod_Extensions.MainMenu;
+namespace ReMod.Core.UI.MainMenu;
 
 public class ReMMSectionElement
 {
@@ -49,7 +49,7 @@ public class ReMMSectionElement
             Tooltip.Method_Public_UiTooltip_String_PDM_6(tooltip);
         }
 
-        if(sizefitter)
+        if (sizefitter)
         {
             ContentSizeFitter csf = RightItemContainer.gameObject.AddComponent<ContentSizeFitter>();
             csf.horizontalFit = ContentSizeFitter.FitMode.PreferredSize;
