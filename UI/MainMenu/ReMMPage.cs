@@ -8,12 +8,12 @@ using UnityEngine.UI;
 using UnityEngine;
 using VRC.UI.Elements.Menus;
 using VRC.UI.Elements;
-using AGeneralQuestMod.ReMod_Extensions.MainMenu.Header;
+using ReMod.Core.UI.MainMenu.Header
 using MelonLoader;
 using VRC.UI.Elements.Tooltips;
 using VRC.UI.Elements.Controls;
 
-namespace AGeneralQuestMod.ReMod_Extensions.MainMenu;
+namespace ReMod.Core.UI.MainMenu;
 
 public class ReMMPage : UiElement
 {
