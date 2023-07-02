@@ -5,7 +5,7 @@ using VRC.UI.Elements.Controls;
 using Object = UnityEngine.Object;
 using TMPro;
 
-namespace AGeneralQuestMod.ReMod_Extensions.MainMenu;
+namespace ReMod.Core.UI.MainMenu;
 
 public class ReMMText : ReMMSectionElement
 {
