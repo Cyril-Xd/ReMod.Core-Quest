@@ -30,7 +30,7 @@ public class ReMMCategorySection : UiElement
 
     public Transform ContentArea { get; private set; }
 
-    public ReMMCategoryEx Category { get; private set; }
+    public ReMMCategory Category { get; private set; }
 
     public string Title
     {
@@ -38,7 +38,7 @@ public class ReMMCategorySection : UiElement
         set => TitleText.text = value; 
     }
 
-    public ReMMCategorySection(string title, bool collapsible = false, Transform parent = null, ReMMCategoryEx category = null, string color = null) : base(CategorySectionPrefab, parent ?? CategorySectionPrefab.transform.parent, $"Section-{title}")
+    public ReMMCategorySection(string title, bool collapsible = false, Transform parent = null, ReMMCategory category = null, string color = null) : base(CategorySectionPrefab, parent ?? CategorySectionPrefab.transform.parent, $"Section-{title}")
     {
         TitleContainer = GameObject.transform.Find("MM_Foldout/Label").gameObject;
         TitleText = TitleContainer.GetComponent<TextMeshProUGUIEx>();

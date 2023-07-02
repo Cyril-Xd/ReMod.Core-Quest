@@ -9,11 +9,11 @@ public class ReMMHeaderElement
 
     public Transform Container => gameObject.transform.parent;
 
-    public ReMMPageEx Page { get; private set; }
+    public ReMMPage Page { get; private set; }
 
     private UiTooltip Tooltip;
 
-    public ReMMHeaderElement(GameObject prefab, ReMMPageEx page, string tooltip) 
+    public ReMMHeaderElement(GameObject prefab, ReMMPage page, string tooltip) 
     {
         gameObject = Object.Instantiate(prefab, page.MenuObject.transform.Find("Menu_MM_DynamicSidePanel/Panel_SectionList/ScrollRect_Navigation/ScrollRect_Content/Header_MM_H2/RightItemContainer"));
         Page = page;

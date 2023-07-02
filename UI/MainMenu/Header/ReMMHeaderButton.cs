@@ -22,7 +22,7 @@ public class ReMMHeaderButton : ReMMHeaderElement
 
     private Button buttonComponent;
 
-    public ReMMHeaderButton(string tooltip, Sprite icon, ReMMPageEx page, Action onClick) : base(ButtonPrefab, page, tooltip)
+    public ReMMHeaderButton(string tooltip, Sprite icon, ReMMPage page, Action onClick) : base(ButtonPrefab, page, tooltip)
     {
         gameObject.name = $"Button_header";
 

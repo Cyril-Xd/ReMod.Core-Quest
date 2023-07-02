@@ -30,7 +30,7 @@ public class ReMMHeaderDropdown : ReMMHeaderElement
     public int SelectedIndex { get; private set; }
 
     //the index of the selected element is passed in onItemSelected
-    public ReMMHeaderDropdown(string name, string tooltip, Sprite icon, ReMMPageEx page, Action<int> onItemSelected = null) : base(DropdownPrefab, page, tooltip)
+    public ReMMHeaderDropdown(string name, string tooltip, Sprite icon, ReMMPage page, Action<int> onItemSelected = null) : base(DropdownPrefab, page, tooltip)
     {
         //prevent nullreference
         onItemSelected ??= Utils.EMPTY_CALLBACK_WPARAM_INT;

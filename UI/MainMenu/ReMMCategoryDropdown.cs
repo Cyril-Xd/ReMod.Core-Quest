@@ -31,7 +31,7 @@ public class ReMMCategoryDropdown : UiElement
 
     public event Action<bool> OnToggle;
 
-    public ReMMCategoryDropdown(string title, ReMMPageEx page, Action<bool> onToggle) : base(DropdownPrefab, page.GetCategoryButtonContainer(), $"Dropdown_{title}")
+    public ReMMCategoryDropdown(string title, ReMMPage page, Action<bool> onToggle) : base(DropdownPrefab, page.GetCategoryButtonContainer(), $"Dropdown_{title}")
     {
         Container = GameObject.transform;
 

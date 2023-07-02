@@ -10,7 +10,7 @@ using Object = UnityEngine.Object;
 namespace AGeneralQuestMod.ReMod_Extensions.MainMenu;
 
 
-public class ReMMCategoryEx : UiElement
+public class ReMMCategory : UiElement
 {
     private static GameObject _categorybuttonPrefab;
     private static GameObject CategoryButtonPrefab
@@ -58,12 +58,12 @@ public class ReMMCategoryEx : UiElement
     public GameObject ButtonObj { get; private set; }
     protected GameObject ContainerObj;
     protected TextMeshProUGUI ButtonText;
-    protected ReMMPageEx Menu;
+    protected ReMMPage Menu;
 
     public event Action onOpen;
     public event Action onClose;
 
-    public ReMMCategoryEx(ReMMPageEx menu, string btnText, string tooltip, Transform parent = null, bool hasCounter = false) : base(hasCounter ? CategoryCounterButtonPrefab : CategoryButtonPrefab, parent ?? menu.GetCategoryButtonContainer(), btnText)
+    public ReMMCategory(ReMMPage menu, string btnText, string tooltip, Transform parent = null, bool hasCounter = false) : base(hasCounter ? CategoryCounterButtonPrefab : CategoryButtonPrefab, parent ?? menu.GetCategoryButtonContainer(), btnText)
     {
         Menu = menu;
         ButtonObj = GameObject;
@@ -94,7 +94,7 @@ public class ReMMCategoryEx : UiElement
         SetTooltipText(tooltip);
     }
 
-    public ReMMCategoryEx(Transform transform) : base(transform) => Menu = new ReMMPageEx(transform.parent.parent.parent.parent.parent.parent);
+    public ReMMCategory(Transform transform) : base(transform) => Menu = new ReMMPage(transform.parent.parent.parent.parent.parent.parent);
 
     public ReMMCategorySection AddSection(string title, bool collapsible = false, string color = null) => new ReMMCategorySection(title, collapsible, GetContainer(), this, color);
 
@@ -116,6 +116,6 @@ public class ReMMCategoryEx : UiElement
 
     public Transform GetContainer() => ContainerObj.transform;
 
-    public ReMMPageEx GetMenu() => Menu;
-    public static ReMMPageEx Create(string text, Sprite icon, bool isRoot) => new ReMMPageEx(text, icon, isRoot);
+    public ReMMPage GetMenu() => Menu;
+    public static ReMMPage Create(string text, Sprite icon, bool isRoot) => new ReMMPage(text, icon, isRoot);
 }
