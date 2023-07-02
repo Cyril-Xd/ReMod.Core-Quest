@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using VRC.UI.Elements.Tooltips;
 
-namespace AGeneralQuestMod.ReMod_Extensions.MainMenu.Header;
+namespace ReMod.Core.UI.MainMenu.Header;
 
 public class ReMMHeaderElement
 {
