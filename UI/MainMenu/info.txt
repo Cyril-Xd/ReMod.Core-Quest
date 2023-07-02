@@ -1,0 +1,15 @@
+element hierarchy:
+MMPage>MMCategory>MMCategorySection>MMelement (toggle, slider, etc.)
+elements must be in a section to function properly
+
+i tried to keep the original style of code the best i could
+
+known issue: element text sometimes returns back to the original "always use visual aide" when clicking on its category
+i don't know how to fix this rather than checking every single element's text when the category is clicked
+
+todo:
+make sidebar category dropdowns work
+(maybe) have that little sidebar collapse button in the top left
+category title text at the top
+avatar and user button carousels
+be silly :troll:
