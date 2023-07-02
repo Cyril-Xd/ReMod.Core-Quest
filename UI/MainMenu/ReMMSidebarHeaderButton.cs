@@ -7,7 +7,7 @@ using VRC.UI.Elements.Tooltips;
 using System;
 using ReMod.Core.UI;
 
-namespace AGeneralQuestMod.ReMod_Extensions.MainMenu;
+namespace ReMod.Core.UI.MainMenu;
 
 //damn these class names are getting long
 public class ReMMSidebarHeaderButton : UiElement
