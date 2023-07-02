@@ -9,7 +9,7 @@ using UnityEngine.UI;
 using VRC.UI.Core.Styles;
 using VRC.UI.Elements.Controls;
 
-namespace AGeneralQuestMod.ReMod_Extensions.MainMenu;
+namespace ReMod.Core.UI.MainMenu;
 
 public class ReMMOptionSelector : ReMMSectionElement
 {
