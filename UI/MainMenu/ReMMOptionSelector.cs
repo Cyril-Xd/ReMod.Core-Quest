@@ -1,5 +1,4 @@
-﻿using AGeneralQuestMod.Internals.Code;
-using MelonLoader;
+﻿using MelonLoader;
 using ReMod.Core.VRChat;
 using System;
 using System.Collections;
@@ -42,8 +41,8 @@ public class ReMMOptionSelector : ReMMSectionElement
     base(SelectorPrefab, parent, tooltip, true, separator) 
     {
         //avoid nullreferences
-        onBack ??= Utils.EMPTY_CALLBACK;
-        onForward ??= Utils.EMPTY_CALLBACK;
+        onBack ??= () => {};
+        onForward ??= () => {};
 
         LeftItemContainer.Find("Title").GetComponent<TextMeshProUGUIEx>().text = title;
         
