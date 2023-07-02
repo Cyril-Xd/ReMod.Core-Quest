@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace AGeneralQuestMod.ReMod_Extensions.MainMenu.Header;
+namespace ReMod.Core.UI.MainMenu.Header;
 
 public class ReMMHeaderButton : ReMMHeaderElement
 {
