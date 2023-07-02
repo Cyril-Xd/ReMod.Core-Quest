@@ -8,7 +8,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using VRC.UI.Elements.Menus;
 using VRC.UI.Elements;
-using ReMod.Core.UI.MainMenu.Header
+using ReMod.Core.UI.MainMenu.Header;
 using MelonLoader;
 using VRC.UI.Elements.Tooltips;
 using VRC.UI.Elements.Controls;
