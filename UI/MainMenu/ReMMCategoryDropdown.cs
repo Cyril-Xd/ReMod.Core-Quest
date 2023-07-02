@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace AGeneralQuestMod.ReMod_Extensions.MainMenu;
+namespace ReMod.Core.UI.MainMenu;
 
 public class ReMMCategoryDropdown : UiElement
 {
