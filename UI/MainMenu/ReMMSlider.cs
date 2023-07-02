@@ -5,9 +5,10 @@ using UnityEngine.UI;
 using VRC.UI.Elements.Controls;
 using VRC.UI.Elements.Utilities;
 
-namespace AGeneralQuestMod.ReMod_Extensions.MainMenu;
+namespace ReMod.Core.UI.MainMenu;
 
 //haven't had the time to test this one so it may or may not work
+//also this is incomplete
 public class ReMMSlider : ReMMSectionElement
 {
     private static GameObject _sliderprefab;
