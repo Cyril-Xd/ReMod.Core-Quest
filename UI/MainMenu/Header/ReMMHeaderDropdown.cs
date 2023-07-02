@@ -1,12 +1,11 @@
-﻿using AGeneralQuestMod.Internals.Code;
-using ReMod.Core.VRChat;
+﻿using ReMod.Core.VRChat;
 using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using VRC.UI.Elements;
 
-namespace AGeneralQuestMod.ReMod_Extensions.MainMenu.Header;
+namespace ReMod.Core.UI.MainMenu.Header;
 
 public class ReMMHeaderDropdown : ReMMHeaderElement
 {
@@ -33,7 +32,7 @@ public class ReMMHeaderDropdown : ReMMHeaderElement
     public ReMMHeaderDropdown(string name, string tooltip, Sprite icon, ReMMPage page, Action<int> onItemSelected = null) : base(DropdownPrefab, page, tooltip)
     {
         //prevent nullreference
-        onItemSelected ??= Utils.EMPTY_CALLBACK_WPARAM_INT;
+        onItemSelected ??= (i) => {}
 
         gameObject.name = $"Field_MM_{name}";
 
