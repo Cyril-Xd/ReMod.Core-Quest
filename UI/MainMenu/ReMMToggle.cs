@@ -9,7 +9,7 @@ using VRC.UI.Elements.Controls;
 using VRC.UI.Elements.Tooltips;
 using Object = UnityEngine.Object;
 
-namespace AGeneralQuestMod.ReMod_Extensions.MainMenu;
+namespace ReMod.Core.UI.MainMenu;
 
 public class ReMMToggle
 {
