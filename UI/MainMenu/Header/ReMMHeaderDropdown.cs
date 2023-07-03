@@ -32,7 +32,7 @@ public class ReMMHeaderDropdown : ReMMHeaderElement
     public ReMMHeaderDropdown(string name, string tooltip, Sprite icon, ReMMPage page, Action<int> onItemSelected = null) : base(DropdownPrefab, page, tooltip)
     {
         //prevent nullreference
-        onItemSelected ??= (i) => {}
+        onItemSelected ??= (i) => {};
 
         gameObject.name = $"Field_MM_{name}";
 

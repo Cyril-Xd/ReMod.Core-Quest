@@ -83,7 +83,7 @@ public class ReMMCategory : UiElement
 
         var edl = ContainerObj.AddComponent<EnableDisableListener>();
         edl.OnEnableEvent += () => onOpen?.Invoke();
-        edl.OnEnableEvent -= () => onClose?.Invoke();
+        edl.OnEnableEvent += () => onClose?.Invoke();
 
         var rbs = ButtonObj.GetComponent<RadioButtonSelector>();
         rbs.field_Public_String_0 = $"-CatetgoryChild-{btnText}";
