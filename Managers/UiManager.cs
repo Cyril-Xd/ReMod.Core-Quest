@@ -43,8 +43,8 @@ namespace ReMod.Core.Managers
             // Main Menu
             if (createMainMenu) // Currently it's WIP and causing issues. If mods changed it to "true" lets just ignore it for now
             {
-                //BigMenu = new ReMMenuPage(menuName, menuSprite, true, color);
-                //ReMMTab.Create(menuName, $"Open the {menuName} menu.", menuName, menuSprite);
+                BigMenu = new ReMMPage(menuName, menuSprite, true, color);
+                ReMMTab.Create(menuName, $"Open the {menuName} menu.", menuName, menuSprite);
             }
         }
     }

@@ -6,6 +6,6 @@ namespace ReMod.Core.UI.MainMenu
 {
     public interface IButtonSystem
     {
-        ReMMenuPage GetMenuPage(string name);
+        ReMMPage GetMenuPage(string name);
     }
 }
