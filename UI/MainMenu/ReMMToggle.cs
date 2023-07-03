@@ -96,16 +96,7 @@ public class ReMMToggle
         _tooltip = toggleObj.GetComponent<UiToggleTooltip>();
         _tooltip.text = tooltip;
         _tooltip.alternateText = tooltip;
-        _tooltip.Method_Public_UiTooltip_String_0(tooltip);
-        _tooltip.Method_Public_UiTooltip_String_1(tooltip);
-        _tooltip.Method_Public_UiTooltip_String_2(tooltip);
-        _tooltip.Method_Public_UiTooltip_String_3(tooltip);
-        _tooltip.Method_Public_UiTooltip_String_4(tooltip);
-        _tooltip.Method_Public_UiTooltip_String_PDM_0(tooltip);
-        _tooltip.Method_Public_UiTooltip_String_PDM_2(tooltip);
-        _tooltip.Method_Public_UiTooltip_String_PDM_4(tooltip);
-        _tooltip.Method_Public_UiTooltip_String_PDM_5(tooltip);
-        _tooltip.Method_Public_UiTooltip_String_PDM_6(tooltip);
+        
         if (separator) Object.Instantiate(MenuEx.MMenuParent.Find("Menu_Settings/Menu_MM_DynamicSidePanel/Panel_SectionList/ScrollRect_Navigation/ScrollRect_Content/Viewport/VerticalLayoutGroup/AudioAndVoice/EarmuffMode/Settings_Panel_1/VerticalLayoutGroup/Separator").gameObject, parent);
         Toggle(defaultState, false);
     }
