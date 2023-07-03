@@ -37,16 +37,6 @@ public class ReMMSectionElement
         {
             Tooltip.text = tooltip;
             Tooltip.alternateText = tooltip;
-            Tooltip.Method_Public_UiTooltip_String_0(tooltip);
-            Tooltip.Method_Public_UiTooltip_String_1(tooltip);
-            Tooltip.Method_Public_UiTooltip_String_2(tooltip);
-            Tooltip.Method_Public_UiTooltip_String_3(tooltip);
-            Tooltip.Method_Public_UiTooltip_String_4(tooltip);
-            Tooltip.Method_Public_UiTooltip_String_PDM_0(tooltip);
-            Tooltip.Method_Public_UiTooltip_String_PDM_2(tooltip);
-            Tooltip.Method_Public_UiTooltip_String_PDM_4(tooltip);
-            Tooltip.Method_Public_UiTooltip_String_PDM_5(tooltip);
-            Tooltip.Method_Public_UiTooltip_String_PDM_6(tooltip);
         }
 
         if (sizefitter)
