@@ -38,9 +38,14 @@ public class ReMMPage : UiElement
     public GameObject MenuObject { get; private set; }
     public TextMeshProUGUI MenuTitleText { get; private set; }
 
+    private static uint pageCount = 0;
+
     private readonly Transform _container;
     public ReMMPage(string text, Sprite icon, bool isRoot = false, string color = "#ffffff") : base(MMMenuPagePrefab, MenuEx.QMenuParent, $"Menu_{text}", false)
     {
+        pageCount++;
+        if(pageCount > 1) return;
+
         MenuObject = UnityEngine.Object.Instantiate(MMMenuPagePrefab, MMMenuPagePrefab.transform.parent);
 
         UnityEngine.Object.DestroyImmediate(MenuObject.GetComponent<SettingsPage>());
