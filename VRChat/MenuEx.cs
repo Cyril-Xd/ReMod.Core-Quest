@@ -8,6 +8,7 @@ using System.Reflection;
 using UnhollowerRuntimeLib;
 using UnityEngine;
 using UnityEngine.UI;
+using VRC.UI;
 using VRC.UI.Elements;
 using VRC.UI.Elements.Menus;
 
@@ -84,49 +85,17 @@ namespace ReMod.Core.VRChat
                 return _getUserInterface;
             }
         }
-        
-        private static ActionMenuController _getActionMenuInstance;
-        
-        public static ActionMenuController ActionMenuInstance
-        {
-            get
-            {
-                if (_getActionMenuInstance == null)
-                {
-                    MelonCoroutines.Start(WaitForActionMenu());
-                    IEnumerator WaitForActionMenu()
-                    {
-                        while (ReferenceEquals(ActionMenuController.prop_ActionMenuController_0, null)) yield return null;
-                        _getActionMenuInstance = ActionMenuController.prop_ActionMenuController_0;
-                    }
-                    
-                    // Compatibility support
-                    Patch();
-                }
-                
-                return _getActionMenuInstance;
-            }
-        }
-        
+
         public static IEnumerator WaitForUInPatch()
         {
-            Patch();
             while (ReferenceEquals(VRCUiManager.field_Private_Static_VRCUiManager_0, null)) yield return null;
             while (ReferenceEquals(MenuEx.userInterface, null)) yield return null;
             while (ReferenceEquals(MenuEx.QMInstance, null)) yield return null;
             while (ReferenceEquals(MenuEx.MMInstance, null)) yield return null;
-            while (ReferenceEquals(MenuEx.ActionMenuInstance, null)) yield return null;
-        }
-
-        public static void Patch()
-        {
-            if (wasPatched) return;
-            wasPatched = true;
-            ReModPatches.Patch();
         }
 
         private static bool wasPatched;
-        
+
         private static VRC.UI.Elements.MainMenu _mainMenuInstance;
 
         public static VRC.UI.Elements.MainMenu MMInstance
@@ -262,18 +231,6 @@ namespace ReMod.Core.VRChat
                 return _MMdashboardMenu;
             }
         }
-        private static Transform _CRXCMenu;
-        public static Transform CRXCMenu
-        {
-            get
-            {
-                if (_CRXCMenu == null)
-                {
-                    _CRXCMenu = QMenuParent.Find("Menu_CRXCMenu");
-                }
-                return _CRXCMenu;
-            }
-        }
         private static Transform _notificationMenu;
         public static Transform NotificationMenu
         {
@@ -329,7 +286,7 @@ namespace ReMod.Core.VRChat
             {
                 if (_settingsMenu == null)
                 {
-                    _settingsMenu = QMenuParent.Find("Menu_Settings");
+                    _settingsMenu = QMenuParent.Find("Menu_QM_GeneralSettings");
                 }
                 return _settingsMenu;
             }
@@ -384,13 +341,14 @@ namespace ReMod.Core.VRChat
             {
                 if (_onIconSprite == null)
                 {
-                    _onIconSprite = QMInstance.transform
-                        .Find("CanvasGroup/Container/Window/QMParent/Menu_Notifications/Panel_NoNotifications_Message/Icon").GetComponent<Image>().sprite;
+                    _onIconSprite = QMenuParent.Find("Menu_Notifications/Panel_NoNotifications_Message/Icon").GetComponent<ImageEx>().sprite;
                 }
-                return _onIconSprite;
+                return _onIconSprite ;
             }
         }
-
+        internal static float? floatOnImageBrightness;
+        internal static float? floatOffImageBrightness;
+        
         private static Sprite _offIconSprite;
         public static Sprite OffIconSprite
         {
@@ -398,7 +356,7 @@ namespace ReMod.Core.VRChat
             {
                 if (_offIconSprite == null)
                 {
-                    _offIconSprite = TogglePrefab.transform.Find("Icon_Off").GetComponent<Image>().sprite;
+                    _offIconSprite = QMenuParent.Find("Menu_Notifications/Panel_Notification_Tabs/Button_ClearNotifications/Text_FieldContent/Icon").GetComponent<ImageEx>().sprite;
                 }
                 return _offIconSprite;
             }
@@ -411,9 +369,8 @@ namespace ReMod.Core.VRChat
             {
                 if (_togglePrefab == null)
                 {
-                    _togglePrefab = QMInstance.transform
-                        .Find("CanvasGroup/Container/Window/QMParent/Menu_Settings/Panel_QM_ScrollRect").GetComponent<ScrollRect>().content
-                        .Find("Buttons_UI_Elements_Row_1/Button_ToggleQMInfo").gameObject;
+                    _togglePrefab = QMenuParent.transform.Find("Menu_Dashboard/ScrollRect").GetComponent<ScrollRect>().content
+                        .Find("Buttons_QuickActions/SitStandCalibrateButton/Button_SitStand").gameObject;
                 }
                 return _togglePrefab;
             }

@@ -1,5 +1,4 @@
-﻿using ReMod.Core.UI.MainMenu;
-using ReMod.Core.UI.QuickMenu;
+﻿using ReMod.Core.UI.QuickMenu;
 using ReMod.Core.VRChat;
 using UnityEngine;
 
@@ -7,24 +6,15 @@ namespace ReMod.Core.Managers
 {
     public class UiManager
     {
-        public IButtonPage MainMenu { get; }
+        public IButtonPage QMenu { get; }
         public IButtonPage TargetMenu { get; }
         public IButtonPage LaunchPad { get; }
-        public IButtonSystem BigMenu { get; }
 
-        public UiManager(string menuName, Sprite menuSprite, bool createQMTargets = true, bool createLaunchPadMenu = true, bool createMainMenu = false, bool crxcmodule = false, string color = "#ffffff")
+        public UiManager(string menuName, Sprite menuSprite, bool createQMTargets = true, bool createLaunchPadMenu = true, string color = "#ffffff")
         {
             // Quick Menu
-            if (!crxcmodule)
-            {
-                MainMenu = new ReMenuPage(menuName, true, color);
-                ReTabButton.Create(menuName, $"Open the {menuName} menu.", menuName, menuSprite);
-            }
-            else
-            {
-                var localMenu = new ReMenuPage(MenuEx.CRXCMenu.transform);
-                MainMenu = localMenu.AddMenuPage($"{menuName}", color:color);
-            }
+            QMenu = new ReMenuPage(menuName, true, color);
+            ReTabButton.Create(menuName, $"Open the {menuName} menu.", menuName, menuSprite);
 
             // Target Menu
             if (createQMTargets)
@@ -38,13 +28,6 @@ namespace ReMod.Core.Managers
             {
                 var localMenu = new ReCategoryPage(MenuEx.DashboardMenu.transform);
                 LaunchPad = localMenu.AddCategory($"{menuName}", color);
-            }
-            
-            // Main Menu
-            if (createMainMenu) // Currently it's WIP and causing issues. If mods changed it to "true" lets just ignore it for now
-            {
-                //BigMenu = new ReMMenuPage(menuName, menuSprite, true, color);
-                //ReMMTab.Create(menuName, $"Open the {menuName} menu.", menuName, menuSprite);
             }
         }
     }

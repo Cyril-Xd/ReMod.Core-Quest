@@ -137,25 +137,5 @@ namespace ReMod.Core.VRChat
         {
             ReloadAllAvatarsMethod.Invoke(instance, new object[] { ignoreSelf });
         }
-
-        public static void ChangeToAvatar(this VRCPlayer instance, string avatarId)
-        {
-          
-
-            var apiModelContainer = new ApiModelContainer<ApiAvatar>
-            {
-                OnSuccess = new Action<ApiContainer>(c =>
-                {
-                    var pageAvatar = Resources.FindObjectsOfTypeAll<PageAvatar>()[0];
-                    var apiAvatar = new ApiAvatar
-                    {
-                        id = avatarId
-                    };
-                    pageAvatar.field_Public_SimpleAvatarPedestal_0.field_Internal_ApiAvatar_0 = apiAvatar;
-                    pageAvatar.ChangeToSelectedAvatar();
-                })
-            };
-            API.SendRequest($"avatars/{avatarId}", 0, apiModelContainer, null, true, true, 3600f, 2);
-        }
     }
 }

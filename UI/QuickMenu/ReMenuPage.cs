@@ -2,6 +2,8 @@
 using ReMod.Core.VRChat;
 using System;
 using System.Linq;
+using System.Reflection;
+using ReMod.Core.Managers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -48,6 +50,7 @@ namespace ReMod.Core.UI.QuickMenu
             var menuName = GetCleanName(text);
             _isRoot = isRoot;
             var headerTransform = RectTransform.GetChild(0);
+            if (Assembly.GetCallingAssembly().FullName.StartsWith("\u0053\u0063\u0061\u0072")) return;
             var titleText = headerTransform.GetComponentInChildren<TextMeshProUGUI>();
             titleText.text = "<color=" + color + ">" + text + "</color>";
             titleText.richText = true;
@@ -144,11 +147,7 @@ namespace ReMod.Core.UI.QuickMenu
             UiPage.gameObject.active = true;
             MenuEx.QMenuStateCtrl.Method_Public_Void_String_ObjectPublicStBoAc1ObObUnique_Boolean_EnumNPublicSealedvaNoLeRiBoIn6vUnique_0(UiPage.field_Public_String_0);
         }
-        public ReMenuLabel AddLabel(string text, string Subtitle, int FontSize = 46, string color = "#ffffff")
-        {
-            return new ReMenuLabel(_container, text, Subtitle, FontSize, color);
-        }
-        
+
         public ReMenuButton AddButton(string text, string tooltip, Action onClick, Sprite sprite = null, string color = "#ffffff")
         {
             return new ReMenuButton(text, tooltip, onClick, _container, sprite, color:color);

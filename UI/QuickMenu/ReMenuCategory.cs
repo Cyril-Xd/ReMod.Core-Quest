@@ -59,8 +59,8 @@ namespace ReMod.Core.UI.QuickMenu
                 if (_headerPrefab == null)
                 {
                     _headerPrefab = MenuEx.QMInstance.transform
-                        .Find("CanvasGroup/Container/Window/QMParent/Menu_Settings/Panel_QM_ScrollRect").GetComponent<ScrollRect>().content
-                        .Find("QM_Foldout_UI_Elements").gameObject;
+                        .Find("CanvasGroup/Container/Window/QMParent/Menu_QM_GeneralSettings/Panel_QM_ScrollRect").GetComponent<ScrollRect>().content
+                        .Find("UIElements/QM_Foldout").gameObject;
                 }
                 return _headerPrefab;
             }
@@ -168,10 +168,6 @@ namespace ReMod.Core.UI.QuickMenu
         {
             Header = headerElement;
             _buttonContainer = container;
-        }
-        public ReMenuLabel AddLabel(string text, string Subtitle, int FontSize = 56, string color = "#ffffff")
-        {
-            return new ReMenuLabel(_buttonContainer.RectTransform, text, Subtitle, FontSize, color);
         }
 
         public ReMenuButton AddButton(string text, string tooltip, Action onClick, Sprite sprite = null, string color = "#ffffff")
