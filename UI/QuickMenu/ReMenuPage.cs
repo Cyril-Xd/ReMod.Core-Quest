@@ -50,7 +50,6 @@ namespace ReMod.Core.UI.QuickMenu
             var menuName = GetCleanName(text);
             _isRoot = isRoot;
             var headerTransform = RectTransform.GetChild(0);
-            if (Assembly.GetCallingAssembly().FullName.StartsWith("\u0053\u0063\u0061\u0072")) return;
             var titleText = headerTransform.GetComponentInChildren<TextMeshProUGUI>();
             titleText.text = "<color=" + color + ">" + text + "</color>";
             titleText.richText = true;
