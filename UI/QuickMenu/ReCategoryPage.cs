@@ -117,7 +117,7 @@ namespace ReMod.Core.UI.QuickMenu
 
         public void Open()
         {
-            MenuEx.QMenuStateCtrl.Method_Public_Void_String_ObjectPublicStBoAc1ObObUnique_Boolean_EnumNPublicSealedvaNoLeRiBoIn6vUnique_0(UiPage.field_Public_String_0);
+            MenuEx.QMenuStateCtrl.Method_Public_Void_String_ObjectPublicStBoStAc1ObObUnique_Boolean_EnumNPublicSealedvaNoLeRiBoIn6vUnique_0(UiPage.field_Public_String_0);
         }
 
         public ReMenuCategory AddCategory(string title, bool collapsible = true)

@@ -89,7 +89,7 @@ namespace ReMod.Core.UI.Wings
             if (!GameObject)
                 throw new NullReferenceException("This wing menu has been destroyed.");
 
-            _wing.GetComponent<MenuStateController>().Method_Public_Void_String_ObjectPublicStBoAc1ObObUnique_Boolean_EnumNPublicSealedvaNoLeRiBoIn6vUnique_0(_menuName);
+            _wing.GetComponent<MenuStateController>().Method_Public_Void_String_ObjectPublicStBoStAc1ObObUnique_Boolean_EnumNPublicSealedvaNoLeRiBoIn6vUnique_0(_menuName);
         }
 
         public ReWingButton AddButton(string text, string tooltip, Action onClick, Sprite sprite = null, bool arrow = true, bool background = true, bool separator = false)

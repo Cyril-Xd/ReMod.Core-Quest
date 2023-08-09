@@ -91,7 +91,7 @@ namespace ReMod.Core.UI.QuickMenu
         /// <param name="selected">Default object matching ones on toggle elements</param>
         public void Open(Object selected = null)
         {
-            MenuEx.QMenuStateCtrl.Method_Public_Void_String_ObjectPublicStBoAc1ObObUnique_Boolean_EnumNPublicSealedvaNoLeRiBoIn6vUnique_0(UiPage.field_Public_String_0);
+            MenuEx.QMenuStateCtrl.Method_Public_Void_String_ObjectPublicStBoStAc1ObObUnique_Boolean_EnumNPublicSealedvaNoLeRiBoIn6vUnique_0(UiPage.field_Public_String_0);
 
             if (_isUpdated)
             {

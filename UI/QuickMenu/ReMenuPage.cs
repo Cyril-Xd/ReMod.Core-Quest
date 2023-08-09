@@ -145,7 +145,7 @@ namespace ReMod.Core.UI.QuickMenu
         public void Open()
         {
             UiPage.gameObject.active = true;
-            MenuEx.QMenuStateCtrl.Method_Public_Void_String_ObjectPublicStBoAc1ObObUnique_Boolean_EnumNPublicSealedvaNoLeRiBoIn6vUnique_0(UiPage.field_Public_String_0);
+            MenuEx.QMenuStateCtrl.Method_Public_Void_String_ObjectPublicStBoStAc1ObObUnique_Boolean_EnumNPublicSealedvaNoLeRiBoIn6vUnique_0(UiPage.field_Public_String_0);
         }
 
         public ReMenuButton AddButton(string text, string tooltip, Action onClick, Sprite sprite = null, string color = "#ffffff")
